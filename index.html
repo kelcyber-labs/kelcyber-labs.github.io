@@ -204,7 +204,7 @@
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.05em; /* Đã bỏ uppercase */
+      letter-spacing: 0.05em; 
       color: var(--cyan); border: 1px solid rgba(0,212,255,0.3);
       background: rgba(0,212,255,0.06);
       padding: 6px 16px; border-radius: 100px;
@@ -287,7 +287,7 @@
     }
     .stat-label {
       font-size: 0.8rem; color: var(--text-3); letter-spacing: 0.05em;
-      font-weight: 500; margin-top: 4px; /* Đã bỏ uppercase */
+      font-weight: 500; margin-top: 4px; 
     }
 
     /* ─────────────────────────────────────────────
@@ -298,7 +298,7 @@
 
     .section-eyebrow {
       font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.05em; /* Đã bỏ uppercase */
+      letter-spacing: 0.05em; 
       color: var(--cyan); margin-bottom: 12px;
     }
     .section-title {
@@ -313,7 +313,7 @@
     }
 
     /* ─────────────────────────────────────────────
-       SOLUTIONS
+       SOLUTIONS & PRODUCT IMAGES
     ───────────────────────────────────────────── */
     #solutions { background: var(--bg-main); }
 
@@ -345,23 +345,47 @@
     }
     .solution-card:hover::before { opacity: 1; }
 
+    /* Product Image Wrapper - Vùng chứa ảnh thật */
+    .card-image-wrap {
+      width: 100%; height: 180px;
+      border-radius: 8px; overflow: hidden;
+      margin-bottom: 24px; border: 1px solid rgba(0,212,255,0.15);
+      position: relative;
+      background: #000;
+    }
+    .card-image-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform var(--transition);
+      opacity: 0.85;
+    }
+    .solution-card:hover .card-image-wrap img {
+      transform: scale(1.05); opacity: 1;
+    }
+    .img-label {
+      position: absolute; bottom: 8px; right: 8px;
+      background: rgba(10,13,20,0.85); color: var(--cyan);
+      padding: 4px 10px; border-radius: 4px;
+      font-family: var(--mono); font-size: 0.65rem; font-weight: 700;
+      border: 1px solid rgba(0,212,255,0.2);
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.05em;
+    }
+
     .card-icon {
       width: 52px; height: 52px;
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem; margin-bottom: 24px;
+      display: none; /* Tạm ẩn icon tròn vì đã có ảnh thật */
     }
-    .card-icon.cyan { background: rgba(0,212,255,0.1); color: var(--cyan); }
-    .card-icon.red  { background: rgba(255,59,59,0.1); color: var(--red); }
-    .card-icon.gold { background: rgba(245,158,11,0.1); color: var(--gold); }
 
     .card-tag {
       font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.05em; /* Đã bỏ uppercase */
+      letter-spacing: 0.05em; 
       padding: 4px 10px; border-radius: 6px;
       background: rgba(0,212,255,0.08); color: var(--cyan);
       border: 1px solid rgba(0,212,255,0.2);
-      display: inline-block; margin-bottom: 12px;
+      display: inline-block; margin-bottom: 16px;
     }
     .card-tag.red-tag {
       background: rgba(255,59,59,0.08); color: var(--red);
@@ -371,7 +395,7 @@
     .card-title {
       font-size: 1.2rem; font-weight: 700;
       letter-spacing: -0.015em; color: var(--text-1);
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
     .card-desc {
       font-size: 0.9rem; color: var(--text-2); line-height: 1.7;
@@ -392,7 +416,7 @@
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px; align-items: center;
+      gap: 40px; align-items: start;
     }
     .solution-card.featured::before { opacity: 1; }
     .solution-card.featured {
@@ -452,7 +476,7 @@
       background: linear-gradient(145deg, #0D1B2A, #111827);
     }
     .price-card.recommended::after {
-      content: 'Đề xuất'; /* Đã sửa thành chữ thường */
+      content: 'Đề xuất';
       position: absolute; top: 20px; right: -28px;
       background: var(--cyan); color: var(--bg-deep);
       font-family: var(--mono); font-size: 0.62rem; font-weight: 700;
@@ -466,7 +490,7 @@
 
     .plan-name {
       font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.05em; /* Đã bỏ uppercase */
+      letter-spacing: 0.05em; 
       color: var(--text-3); margin-bottom: 8px;
     }
     .plan-title {
@@ -543,7 +567,7 @@
     thead th {
       padding: 16px 20px; text-align: left;
       font-family: var(--mono); font-size: 0.7rem;
-      font-weight: 700; letter-spacing: 0.05em; /* Đã bỏ uppercase */
+      font-weight: 700; letter-spacing: 0.05em;
       color: var(--text-3); border-bottom: 1px solid var(--border);
     }
     thead th:first-child { color: var(--text-2); }
@@ -883,9 +907,14 @@
     <div class="solutions-grid">
 
       <div class="solution-card fade-up">
-        <div class="card-icon cyan"><i class="fa-solid fa-laptop-code"></i></div>
         <span class="card-tag">EDR Foundation</span>
         <h3 class="card-title">Phòng vệ điểm cuối nền tảng</h3>
+        
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop" alt="Hệ thống quản trị bảo mật điểm cuối">
+          <div class="img-label">KASPERSKY ENDPOINT</div>
+        </div>
+
         <p class="card-desc">
           Bảo mật thiết bị đầu cuối với khả năng phát hiện hành vi AI thông minh, chống mã độc
           và Ransomware cấp độ File cho SMB.
@@ -898,9 +927,14 @@
       </div>
 
       <div class="solution-card fade-up">
-        <div class="card-icon red"><i class="fa-solid fa-shield-virus"></i></div>
         <span class="card-tag red-tag">MDR Managed SOC</span>
         <h3 class="card-title">Vận hành SOC toàn diện 24/7</h3>
+
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" alt="Đội ngũ giám sát SOC">
+          <div class="img-label">SOC LEVEL 3 TEAM</div>
+        </div>
+
         <p class="card-desc">
           Đội ngũ chuyên gia Level 3 tiếp quản quy trình phát hiện và phản ứng, giải phóng
           nguồn lực IT nội bộ cho tập đoàn.
@@ -914,13 +948,12 @@
 
       <div class="solution-card featured fade-up">
         <div>
-          <div class="card-icon cyan"><i class="fa-solid fa-diagram-project"></i></div>
           <span class="card-tag">XDR Suite</span>
-          <h3 class="card-title"> Extended Detection & Response Expert</h3>
+          <h3 class="card-title">Extended Detection & Response Expert</h3>
           <p class="card-desc">
             Tương quan sự kiện đa tầng: Network, Cloud, Endpoint và Email. Nền tảng hợp nhất giúp phát hiện các cuộc tấn công có chủ đích phức tạp (APT) mà các giải pháp đơn lẻ không thể nhìn thấy.
           </p>
-          <ul class="card-features">
+          <ul class="card-features" style="margin-bottom: 24px;">
             <li><i class="fa-solid fa-check"></i> Correlation Engine XDR đa nguồn</li>
             <li><i class="fa-solid fa-check"></i> Tự động hóa Playbook SOAR tùy chỉnh</li>
             <li><i class="fa-solid fa-check"></i> Threat Hunting chủ động cấp chuyên gia</li>
@@ -929,6 +962,11 @@
         </div>
 
         <div class="xdr-visual">
+          <div class="card-image-wrap" style="height: 220px; margin-bottom: 16px;">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Hệ thống Core Network">
+            <div class="img-label">DRAYTEK & MIKROTIK 10GBPS CORE</div>
+          </div>
+
           <div class="xdr-layer"><i class="fa-solid fa-envelope-shield"></i> Email Gateway Protection <span class="layer-label">Layer 01</span></div>
           <div class="xdr-layer"><i class="fa-solid fa-cloud-meatball"></i> Cloud Workload Security <span class="layer-label">Layer 02</span></div>
           <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Network Traffic Analysis <span class="layer-label">Layer 03</span></div>
@@ -1396,7 +1434,7 @@
     } catch {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu tích hợp';
-      alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline 1900 2088.');
+      alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline 0903134775.');
     }
   });
 
