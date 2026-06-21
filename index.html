@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ─────────────────────────────────────────────
-       DESIGN TOKENS
+       DESIGN TOKENS – CẬP NHẬT MÀU SẮC TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     :root {
       --bg-deep:    #070A10;
@@ -19,18 +18,18 @@
       --bg-card2:   #151D2E;
       --border:     #1E293B;
       --border-hi:  #1E3A5F;
-      --cyan:       #00D4FF;
+      --cyan:       #00D4FF; /* Electric Cyan sắc nét */
       --cyan-dim:   #0099BB;
       --cyan-glow:  rgba(0,212,255,0.15);
       --cyan-glow2: rgba(0,212,255,0.06);
-      --red:        #FF3B3B;
+      --red:        #E53E3E; /* Branded Red đậm hơn */
       --red-dim:    #C0392B;
       --gold:       #F59E0B;
       --text-1:     #E2E8F0;
       --text-2:     #94A3B8;
       --text-3:     #475569;
       --mono:       'JetBrains Mono', monospace;
-      --sans:       'Inter', sans-serif;
+      --sans: 'Segoe UI', var(--sans); /* Phông Segoe UI cho giống ảnh chế */
       --radius:     12px;
       --radius-lg:  20px;
       --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
@@ -47,7 +46,7 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
+    img { display: block; max-width: 100%; height: auto; object-fit: cover; } /* Đảm bảo ảnh đẹp */
 
     /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 6px; }
@@ -126,7 +125,7 @@
     .mobile-nav a:hover { color: var(--cyan); background: var(--cyan-glow2); }
 
     /* ─────────────────────────────────────────────
-       HERO
+       HERO – CẬP NHẬT NỘI DUNG TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     #hero {
       position: relative; overflow: hidden;
@@ -221,9 +220,9 @@
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-size: clamp(2.4rem, 6vw, 3.8rem); /* Giảm xíu font cho giống */
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.15;
       letter-spacing: -0.035em;
       color: var(--text-1);
       margin-bottom: 20px;
@@ -421,7 +420,7 @@
     }
 
     /* ─────────────────────────────────────────────
-       PRICING
+       PRICING – CẬP NHẬT GIÁ TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     #pricing {
       background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-deep) 100%);
@@ -559,7 +558,7 @@
     .highlight-col { color: var(--cyan) !important; font-weight: 600 !important; }
 
     /* ─────────────────────────────────────────────
-       GALLERY
+       GALLERY – "ĐỘ" ẢNH THỰC TẾ TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     #gallery { background: var(--bg-main); }
 
@@ -576,39 +575,44 @@
       cursor: pointer;
       border: 1px solid var(--border);
       background: var(--bg-card);
+      height: 100%; /* Đảm bảo ô Gallery đầy chiều cao */
     }
     .gallery-item:first-child {
       grid-column: 1 / 3;
       grid-row: 1 / 3;
     }
+    /* Chỉnh sửa ảnh hiển thị đẹp hơn */
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Tối ưu placeholder nếu không load được ảnh */
     .gallery-placeholder {
-      width: 100%; aspect-ratio: 16/9;
+      width: 100%; height: 100%;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 12px; color: var(--text-3);
       font-size: 0.8rem;
       background: linear-gradient(135deg, var(--bg-card) 0%, #0D1520 100%);
-      transition: background var(--transition);
-    }
-    .gallery-item:first-child .gallery-placeholder {
-      aspect-ratio: 4/3;
     }
     .gallery-placeholder i { font-size: 2rem; color: var(--border-hi); }
-    .gallery-item:hover .gallery-placeholder { background: linear-gradient(135deg, #0D1826 0%, #111827 100%); }
+    
     .gallery-caption {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 20px 18px 16px;
-      background: linear-gradient(to top, rgba(7,10,16,0.9), transparent);
+      background: linear-gradient(to top, rgba(7,10,16,1) 0%, rgba(7,10,16,0) 100%); /* Caption đậm hơn từ đáy */
       font-size: 0.8rem; font-weight: 600; color: var(--text-1);
     }
 
     @media (max-width: 768px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item:first-child { grid-column: 1; grid-row: auto; }
+      .gallery-item img { height: 200px; } /* Mobile ảnh thấp hơn */
     }
 
     /* ─────────────────────────────────────────────
-       CONTACT FORM
+       CONTACT FORM – CẬP NHẬT TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     #contact { background: var(--bg-deep); }
 
@@ -641,12 +645,13 @@
       font-size: 0.9rem; color: var(--text-1); font-weight: 600;
     }
 
-    /* Form */
+    /* Form – Panel đậm hơn cho nổi bật */
     .form-card {
-      background: var(--bg-card);
+      background: rgba(17,24,39,0.7); /* Background hơi mờ cho form giống panel mờ trong ảnh */
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 44px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.4);
     }
     @media (max-width: 480px) { .form-card { padding: 28px 20px; } }
 
@@ -701,17 +706,19 @@
       display: inline-flex; align-items: center; gap: 10px;
       font-weight: 700; font-size: 0.95rem;
       padding: 14px 32px; border-radius: 10px;
-      background: var(--cyan); color: var(--bg-deep);
+      background: var(--red); color: white; /* Nút branded red */
       border: none; cursor: pointer;
       transition: all var(--transition);
+      width: 100%; justify-content: center; /* Nút full-width như ảnh chế */
     }
     .btn-submit:hover {
-      background: #00BADF;
-      box-shadow: 0 0 28px rgba(0,212,255,0.4);
+      background: var(--red-dim);
+      box-shadow: 0 0 28px rgba(229,62,62,0.4); /* Glow red */
       transform: translateY(-2px);
     }
     .form-privacy {
       font-size: 0.75rem; color: var(--text-3); line-height: 1.5;
+      text-align: center; width: 100%; margin-top: 10px; /* Center-aligned grey text */
     }
     .form-privacy i { color: var(--cyan); }
 
@@ -729,7 +736,7 @@
     .form-success p { font-size: 0.875rem; color: var(--text-2); }
 
     /* ─────────────────────────────────────────────
-       FOOTER
+       FOOTER – CẬP NHẬT TỪ ẢNH CHẾ
     ───────────────────────────────────────────── */
     footer {
       background: var(--bg-deep);
@@ -782,9 +789,6 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════ -->
 <header id="header">
   <div class="logo">
     <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -809,11 +813,7 @@
   <a href="#contact"   onclick="closeMobileNav()"><i class="fa-solid fa-envelope"></i>&nbsp; Liên Hệ</a>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     HERO
-══════════════════════════════════════════ -->
 <section id="hero">
-  <!-- Radar effect -->
   <div class="radar-wrap" aria-hidden="true">
     <div class="radar-ring"></div>
     <div class="radar-ring"></div>
@@ -833,25 +833,21 @@
     </div>
 
     <h1 class="hero-title">
-      Phát Hiện Mọi <span class="threat">Mối Đe Dọa</span>.<br/>
-      Bảo Vệ Toàn Diện <span class="accent">Hệ Thống</span>.
+      <span class="threat">GIẢI PHÁP</span> BẢO MẬT TOÀN DIỆN:<br/>
+      TỪ <span class="accent">EDR</span> ĐẾN <span class="accent">XDR</span>
     </h1>
 
     <p class="hero-sub">
-      Giải pháp an ninh mạng doanh nghiệp cấp cao — từ EDR Foundation đến SOC Managed Service
-      — được thiết kế để phát hiện, ngăn chặn và ứng phó tức thời với các mối đe dọa tinh vi nhất.
+      Giải pháp an ninh mạng doanh nghiệp cấp cao — tích hợp trí tuệ nhân tạo để phát hiện,
+      ngăn chặn và ứng phó tức thời với mọi mối đe dọa tinh vi nhất.
     </p>
 
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">
-        <i class="fa-solid fa-rocket"></i> Nhận Tư Vấn Ngay
+      <a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit" target="_blank" rel="noopener" class="btn-primary">
+        <i class="fa-solid fa-file-invoice-dollar"></i> NHẬN BÁO GIÁ CHI TIẾT
       </a>
-      <a
-        href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit"
-        target="_blank" rel="noopener"
-        class="btn-outline"
-      >
-        <i class="fa-solid fa-file-lines"></i> Tài Liệu Chi Tiết
+      <a href="#contact" class="btn-outline">
+        <i class="fa-solid fa-rocket"></i> Yêu cầu khảo sát
       </a>
     </div>
 
@@ -876,9 +872,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     SOLUTIONS
-══════════════════════════════════════════ -->
 <section id="solutions">
   <div class="container">
     <p class="section-eyebrow fade-up"><i class="fa-solid fa-microchip"></i> &nbsp;Giải Pháp Kỹ Thuật</p>
@@ -890,56 +883,49 @@
 
     <div class="solutions-grid">
 
-      <!-- EDR Card -->
       <div class="solution-card fade-up">
         <div class="card-icon cyan"><i class="fa-solid fa-laptop-code"></i></div>
-        <span class="card-tag">EDR</span>
-        <h3 class="card-title">Endpoint Detection & Response</h3>
+        <span class="card-tag">EDR Foundation</span>
+        <h3 class="card-title">Phòng Vệ Điểm Cuối Nền Tảng</h3>
         <p class="card-desc">
-          Giám sát thời gian thực toàn bộ thiết bị đầu cuối, phân tích hành vi nâng cao
-          và tự động hóa phản ứng sự cố ngay tại điểm tấn công.
+          Bảo mật thiết bị đầu cuối với khả năng phát hiện hành vi AI thông minh, chống mã độc
+          và Ransomware cấp độ File cho SMB.
         </p>
         <ul class="card-features">
-          <li><i class="fa-solid fa-check"></i> Phân tích hành vi AI/ML theo thời gian thực</li>
-          <li><i class="fa-solid fa-check"></i> Cô lập tự động thiết bị bị xâm phạm</li>
-          <li><i class="fa-solid fa-check"></i> Thu thập bằng chứng pháp lý số (Forensics)</li>
-          <li><i class="fa-solid fa-check"></i> Tích hợp threat intelligence toàn cầu</li>
+          <li><i class="fa-solid fa-check"></i> Chống mã độc AI theo thời gian thực</li>
+          <li><i class="fa-solid fa-check"></i> Cô lập thiết bị khi bị xâm phạm</li>
+          <li><i class="fa-solid fa-check"></i> Dashboard quản trị tập trung (Cloud)</li>
         </ul>
       </div>
 
-      <!-- MDR Card -->
       <div class="solution-card fade-up">
         <div class="card-icon red"><i class="fa-solid fa-shield-virus"></i></div>
-        <span class="card-tag red-tag">MDR</span>
-        <h3 class="card-title">Managed Detection & Response</h3>
+        <span class="card-tag red-tag">MDR Managed SOC</span>
+        <h3 class="card-title">Vận Hành SOC Toàn Diện 24/7</h3>
         <p class="card-desc">
-          Đội ngũ chuyên gia SOC của chúng tôi tiếp quản toàn bộ quy trình phát hiện,
-          điều tra và ứng phó — giải phóng nguồn lực IT nội bộ của bạn.
+          Đội ngũ chuyên gia Level 3 tiếp quản quy trình phát hiện và phản ứng, giải phóng
+          nguồn lực IT nội bộ cho tập đoàn.
         </p>
         <ul class="card-features">
-          <li><i class="fa-solid fa-check"></i> Giám sát 24/7 bởi chuyên gia Level 3</li>
-          <li><i class="fa-solid fa-check"></i> SLA phản hồi dưới 15 phút</li>
-          <li><i class="fa-solid fa-check"></i> Báo cáo hàng tuần & hàng tháng</li>
-          <li><i class="fa-solid fa-check"></i> Hỗ trợ điều tra nội bộ (IR Retainer)</li>
+          <li><i class="fa-solid fa-check"></i> SLA phản hồi sự cố < 15 phút</li>
+          <li><i class="fa-solid fa-check"></i> Hỗ trợ điều tra pháp lý số (Forensics)</li>
+          <li><i class="fa-solid fa-check"></i> Báo cáo CISO-as-a-Service hàng tháng</li>
         </ul>
       </div>
 
-      <!-- XDR Card – featured -->
       <div class="solution-card featured fade-up">
         <div>
           <div class="card-icon cyan"><i class="fa-solid fa-diagram-project"></i></div>
-          <span class="card-tag">XDR</span>
-          <h3 class="card-title">Extended Detection & Response</h3>
+          <span class="card-tag">XDR Suite</span>
+          <h3 class="card-title"> Extended Detection & Response Expert</h3>
           <p class="card-desc">
-            Nền tảng XDR hợp nhất dữ liệu từ email, cloud, mạng và điểm cuối vào một
-            giao diện duy nhất. Tương quan sự kiện nâng cao giúp phát hiện tấn công
-            phức tạp mà các giải pháp đơn lẻ không thể thấy.
+            Tương quan sự kiện đa tầng: Network, Cloud, Endpoint và Email. Nền tảng hợp nhất giúp phát hiện các cuộc tấn công có chủ đích phức tạp (APT) mà các giải pháp đơn lẻ không thể nhìn thấy.
           </p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check"></i> Tương quan sự kiện đa nguồn (Email, Cloud, Network, Endpoint)</li>
+            <li><i class="fa-solid fa-check"></i> Correlation Engine XDR đa nguồn</li>
+            <li><i class="fa-solid fa-check"></i> Tự động hóa Playbook SOAR tùy chỉnh</li>
+            <li><i class="fa-solid fa-check"></i> Threat Hunting chủ động cấp chuyên gia</li>
             <li><i class="fa-solid fa-check"></i> MITRE ATT&CK mapping tự động</li>
-            <li><i class="fa-solid fa-check"></i> Playbook phản ứng tự động (SOAR)</li>
-            <li><i class="fa-solid fa-check"></i> Threat Hunting chủ động theo yêu cầu</li>
           </ul>
         </div>
 
@@ -949,7 +935,7 @@
           <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Network Traffic Analysis <span class="layer-label">LAYER 03</span></div>
           <div class="xdr-layer"><i class="fa-solid fa-laptop-code"></i> Endpoint Telemetry <span class="layer-label">LAYER 04</span></div>
           <div class="xdr-layer" style="border-color: rgba(0,212,255,0.3); color: var(--cyan);">
-            <i class="fa-solid fa-brain"></i> XDR Correlation Engine <span class="layer-label" style="color: var(--cyan);">CORE</span>
+            <i class="fa-brain fa-solid"></i> Core Correlation Engine <span class="layer-label" style="color: var(--cyan);">CORE</span>
           </div>
         </div>
       </div>
@@ -958,119 +944,108 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PRICING
-══════════════════════════════════════════ -->
 <section id="pricing">
   <div class="container">
     <p class="section-eyebrow fade-up"><i class="fa-solid fa-tag"></i> &nbsp;Bảng Giá</p>
-    <h2 class="section-title fade-up">Gói Giải Pháp &amp;<br/>Niêm Yết Giá</h2>
+    <h2 class="section-title fade-up">Giải Pháp &amp;<br/>Niêm Yết Giá</h2>
     <p class="section-lead fade-up">
-      Linh hoạt theo quy mô — từ doanh nghiệp vừa cần nền tảng EDR đến tập đoàn lớn
-      yêu cầu quản lý SOC toàn diện. Mọi gói đều bao gồm onboarding và hỗ trợ 24/7.
+      Linh hoạt theo quy mô — từ SMB cần nền tảng EDR đến tập đoàn lớn yêu cầu quản lý
+      SOC toàn diện 24/7.
     </p>
 
     <div class="pricing-grid">
 
-      <!-- EDR Foundation -->
       <div class="price-card fade-up">
-        <div class="plan-name">Gói Cơ Bản</div>
-        <div class="plan-title">EDR Foundation</div>
-        <div class="plan-desc">Phòng vệ điểm cuối nền tảng cho SMB và doanh nghiệp tăng trưởng.</div>
+        <div class="plan-name">SMB / Doanh nghiệp vừa</div>
+        <div class="plan-title">EDR Basic</div>
+        <div class="plan-desc">Bảo vệ thiết bị đầu cuối với phát hiện Ransomware nền tảng.</div>
         <div class="plan-price">
-          <span class="price-amount">$6</span>
-          <span class="price-unit">/ thiết bị / tháng</span>
+          <span class="price-amount">5.000.000</span>
+          <span class="price-unit">VNĐ / năm</span>
         </div>
-        <div class="price-note">Tối thiểu 50 thiết bị · Billed annually</div>
+        <div class="price-note">Billed annually · Cloud management</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> EDR Agent đa nền tảng</li>
-          <li><i class="fa-solid fa-check check"></i> Phát hiện hành vi AI cơ bản</li>
-          <li><i class="fa-solid fa-check check"></i> Dashboard quản trị tập trung</li>
-          <li><i class="fa-solid fa-check check"></i> Alert & báo cáo tự động</li>
+          <li><i class="fa-solid fa-check check"></i> Chống Malware & Ransomware AI</li>
+          <li><i class="fa-solid fa-check check"></i> Device Control & Device Isolation</li>
+          <li><i class="fa-solid fa-check check"></i> Alert tự động</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> Threat Hunting</li>
-          <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Analyst 24/7</li>
+          <li class="disabled"><i class="fa-solid fa-minus cross"></i> Forensics</li>
         </ul>
         <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
       </div>
 
-      <!-- EDR Advanced – recommended -->
       <div class="price-card recommended fade-up">
         <div class="plan-name">Phổ Biến Nhất</div>
         <div class="plan-title">EDR Advanced</div>
-        <div class="plan-desc">Phát hiện nâng cao, forensics và phản ứng tự động cho doanh nghiệp.</div>
+        <div class="plan-desc">Phát hiện nâng cao, thu thập bằng chứng forensics và phản ứng tự động.</div>
         <div class="plan-price">
-          <span class="price-amount">$12</span>
-          <span class="price-unit">/ thiết bị / tháng</span>
+          <span class="price-amount">15.000.000</span>
+          <span class="price-unit">VNĐ / năm</span>
         </div>
-        <div class="price-note">Tối thiểu 50 thiết bị · Billed annually</div>
+        <div class="price-note">Billed annually · Full Forensics suite</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> Tất cả tính năng Foundation</li>
-          <li><i class="fa-solid fa-check check"></i> Threat Hunting chủ động</li>
-          <li><i class="fa-solid fa-check check"></i> Thu thập forensics nâng cao</li>
+          <li><i class="fa-solid fa-check check"></i> Bao gồm EDR Basic</li>
+          <li><i class="fa-solid fa-check check"></i> Threat Hunting chủ động cấp Expert</li>
+          <li><i class="fa-solid fa-check check"></i> Thu thập Forensics nâng cao</li>
           <li><i class="fa-solid fa-check check"></i> MITRE ATT&CK Mapping</li>
-          <li><i class="fa-solid fa-check check"></i> API tích hợp SIEM/SOAR</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Analyst 24/7</li>
         </ul>
         <a href="#contact" class="btn-plan fill">Bắt Đầu Ngay</a>
       </div>
 
-      <!-- XDR Platform -->
       <div class="price-card fade-up">
-        <div class="plan-name">Đa Tầng</div>
-        <div class="plan-title">XDR Platform</div>
-        <div class="plan-desc">Hợp nhất email, cloud, network và endpoint trong một nền tảng.</div>
+        <div class="plan-name">Hợp nhất đa nguồn</div>
+        <div class="plan-title">XDR Suite Pro</div>
+        <div class="plan-desc">Hợp nhất Email, Cloud, Network và EndpointTelemetry 360 độ.</div>
         <div class="plan-price">
-          <span class="price-amount">$22</span>
-          <span class="price-unit">/ thiết bị / tháng</span>
+          <span class="price-amount">25.000.000</span>
+          <span class="price-unit">VNĐ / năm</span>
         </div>
-        <div class="price-note">Tối thiểu 100 thiết bị · Billed annually</div>
+        <div class="price-note">Billed annually · Custom SOAR playbooks</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> Tất cả tính năng Advanced</li>
-          <li><i class="fa-solid fa-check check"></i> Tương quan sự kiện XDR</li>
-          <li><i class="fa-solid fa-check check"></i> Email & Cloud telemetry</li>
-          <li><i class="fa-solid fa-check check"></i> Network traffic analysis</li>
-          <li><i class="fa-solid fa-check check"></i> Playbook SOAR tùy chỉnh</li>
+          <li><i class="fa-solid fa-check check"></i> Toàn bộ tính năng EDR Advanced</li>
+          <li><i class="fa-solid fa-check check"></i> Correlation Engine XDR</li>
+          <li><i class="fa-solid fa-check check"></i> Email Gateway & Cloud Telemetry</li>
+          <li><i class="fa-solid fa-check check"></i> Network Traffic Analysis</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Managed Service</li>
         </ul>
         <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
       </div>
 
-      <!-- SOC Managed Service -->
       <div class="price-card enterprise fade-up">
-        <div class="plan-name">Toàn Diện</div>
-        <div class="plan-title">SOC Managed Service</div>
-        <div class="plan-desc">Chuyên gia SOC của chúng tôi quản lý toàn bộ hệ thống bảo mật 24/7.</div>
+        <div class="plan-name">Vận hành trọn gói</div>
+        <div class="plan-title">XDR Enterprise / SOC Service</div>
+        <div class="plan-desc">Đội ngũ chuyên gia SOC của chúng tôi quản lý hệ thống 24/7.</div>
         <div class="plan-price">
-          <span class="price-amount">Liên hệ</span>
+          <span class="price-amount">60.000.000</span>
+          <span class="price-unit">VNĐ / năm (Tùy chỉnh)</span>
         </div>
-        <div class="price-note">Theo quy mô · Tùy chỉnh SLA</div>
+        <div class="price-note">Theo quy mô · Tùy chỉnh SLA 2 giờ</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> Toàn bộ tính năng XDR</li>
+          <li><i class="fa-solid fa-check check"></i> Toàn bộ tính năng XDR Pro</li>
           <li><i class="fa-solid fa-check check"></i> SOC Analyst Level 3 24/7</li>
-          <li><i class="fa-solid fa-check check"></i> IR Retainer & ứng phó sự cố</li>
-          <li><i class="fa-solid fa-check check"></i> CISO-as-a-Service hàng tháng</li>
-          <li><i class="fa-solid fa-check check"></i> Tuân thủ ISO 27001 / PCI DSS</li>
-          <li><i class="fa-solid fa-check check"></i> SLA phản hồi dưới 15 phút</li>
+          <li><i class="fa-solid fa-check check"></i> Incident Responder & Threat Hunter</li>
+          <li><i class="fa-solid fa-check check"></i> CISO-as-a-Service</li>
+          <li><i class="fa-solid fa-check check"></i> SLA phản hồi < 15 phút</li>
         </ul>
         <a href="#contact" class="btn-plan gold-fill">Liên Hệ Báo Giá</a>
       </div>
 
     </div>
 
-    <!-- Compare table -->
     <div class="compare-table-wrap fade-up" style="margin-top: 64px;">
       <table>
         <thead>
           <tr>
-            <th>TÍNH NĂNG</th>
-            <th>EDR Foundation</th>
+            <th>TÍNH NĂNG CHÍNH</th>
+            <th>EDR Basic</th>
             <th class="highlight-col">EDR Advanced</th>
-            <th>XDR Platform</th>
-            <th>SOC Managed</th>
+            <th>XDR Suite Pro</th>
+            <th>XDR Enterprise</th>
           </tr>
         </thead>
         <tbody>
@@ -1079,7 +1054,7 @@
             <td>Cơ bản</td>
             <td class="highlight-col">Nâng cao</td>
             <td>Nâng cao</td>
-            <td>Chuyên sâu</td>
+            <td>Chuyên sâu 24/7</td>
           </tr>
           <tr>
             <td>Thu thập Forensics</td>
@@ -1089,10 +1064,10 @@
             <td><i class="fa-solid fa-check"></i></td>
           </tr>
           <tr>
-            <td>Threat Hunting</td>
+            <td>Threat Hunting cấp chuyên gia</td>
             <td><i class="fa-solid fa-minus"></i></td>
-            <td class="highlight-col"><i class="fa-solid fa-check"></i></td>
-            <td><i class="fa-solid fa-check"></i></td>
+            <td class="highlight-col"><i class="fa-solid fa-minus"></i></td>
+            <td><i class="fa-solid fa-minus"></i></td>
             <td><i class="fa-solid fa-check"></i></td>
           </tr>
           <tr>
@@ -1103,14 +1078,14 @@
             <td><i class="fa-solid fa-check"></i></td>
           </tr>
           <tr>
-            <td>XDR Correlation Engine</td>
+            <td>Core Correlation Engine XDR</td>
             <td><i class="fa-solid fa-minus"></i></td>
             <td class="highlight-col"><i class="fa-solid fa-minus"></i></td>
             <td><i class="fa-solid fa-check"></i></td>
             <td><i class="fa-solid fa-check"></i></td>
           </tr>
           <tr>
-            <td>SOC Analyst 24/7</td>
+            <td>SOC Analyst Level 3 24/7</td>
             <td><i class="fa-solid fa-minus"></i></td>
             <td class="highlight-col"><i class="fa-solid fa-minus"></i></td>
             <td><i class="fa-solid fa-minus"></i></td>
@@ -1125,7 +1100,7 @@
           </tr>
           <tr>
             <td>SLA Phản hồi</td>
-            <td>Không bảo đảm</td>
+            <td>4 giờ</td>
             <td class="highlight-col">4 giờ</td>
             <td>2 giờ</td>
             <td>15 phút</td>
@@ -1134,7 +1109,6 @@
       </table>
     </div>
 
-    <!-- CTA Banner -->
     <div class="fade-up" style="
       margin-top: 48px; padding: 36px 40px;
       background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,212,255,0.02));
@@ -1143,10 +1117,10 @@
     ">
       <div>
         <p style="font-weight: 700; font-size: 1.05rem; color: var(--text-1); margin-bottom: 4px;">
-          <i class="fa-solid fa-file-lines text-cyan"></i>&nbsp; Xem Tài Liệu Kỹ Thuật Đầy Đủ
+          <i class="fa-solid fa-file-lines text-cyan"></i>&nbsp; Xem Tài Liệu Kỹ Thuật & Case Study Đầy Đủ
         </p>
         <p style="font-size: 0.875rem; color: var(--text-2);">
-          Thông số chi tiết, kiến trúc triển khai và case study thực tế.
+          Thông số chi tiết, kiến trúc triển khai và case study thực tế cho doanh nghiệp.
         </p>
       </div>
       <a
@@ -1161,78 +1135,55 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     GALLERY
-══════════════════════════════════════════ -->
 <section id="gallery">
   <div class="container">
     <p class="section-eyebrow fade-up"><i class="fa-solid fa-images"></i> &nbsp;Triển Khai Thực Tế</p>
     <h2 class="section-title fade-up">Hình Ảnh Từ<br/>Hiện Trường</h2>
     <p class="section-lead fade-up">
-      Ghi lại từ các dự án triển khai thực tế tại doanh nghiệp — từ SOC Operations Center
-      đến hệ thống giám sát network và điểm cuối tại chỗ.
+      Ghi lại từ các dự án triển khai thực tế — từ SOC Operations Center 24/7 đến hệ thống
+      core lab và phân tích forensics cấp chuyên gia.
     </p>
 
     <div class="gallery-grid fade-up">
 
       <div class="gallery-item">
-        <div class="gallery-placeholder" style="aspect-ratio: 4/3;">
-          <i class="fa-solid fa-display"></i>
-          <span>SOC Operations Center</span>
-        </div>
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Trung Tâm Điều Hành Bảo Mật 24/7</div>
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop" alt="SOC Operations Center" />
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Trung Tâm Điều Hành Bảo Mật SOC 24/7</div>
       </div>
 
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa-solid fa-chart-area"></i>
-          <span>Threat Dashboard</span>
-        </div>
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Bảng Điều Khiển Mối Đe Dọa Theo Thời Gian Thực</div>
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop" alt="Threat Dashboard" />
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Threat Hunting Dashboard</div>
       </div>
 
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa-solid fa-server"></i>
-          <span>Hạ Tầng Triển Khai</span>
-        </div>
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Hạ Tầng On-Premise & Hybrid Cloud</div>
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="High-Density Core Labs" />
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;High-Density Core Labs</div>
       </div>
 
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa-solid fa-magnifying-glass-chart"></i>
-          <span>Phân Tích Forensics</span>
-        </div>
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Điều Tra Pháp Lý Số Sau Sự Cố</div>
+        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=800&auto=format&fit=crop" alt="Forensics Analysis" />
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Điều Tra Forensics Cấp Chuyên Gia</div>
       </div>
 
       <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <i class="fa-solid fa-user-shield"></i>
-          <span>Đội Ngũ Chuyên Gia</span>
-        </div>
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Đội Ngũ Threat Hunter & Incident Responder</div>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Threat Hunters" />
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Đội Ngũ Threat Hunters & Configures</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     CONTACT
-══════════════════════════════════════════ -->
 <section id="contact">
   <div class="container">
     <div class="contact-layout">
 
-      <!-- Left: Info -->
       <div class="contact-info fade-up">
         <p class="section-eyebrow"><i class="fa-solid fa-headset"></i> &nbsp;Liên Hệ</p>
-        <h2 class="section-title">Bắt Đầu Hành Trình<br/>Bảo Vệ Của Bạn</h2>
+        <h2 class="section-title">Bắt Đầu Hành Trình<br/>Bảo Vệ Ngay</h2>
         <p class="section-lead">
-          Đội ngũ chuyên gia của chúng tôi sẽ phân tích hiện trạng bảo mật và đề xuất
-          giải pháp phù hợp nhất — hoàn toàn miễn phí trong buổi tư vấn đầu tiên.
+          Đội ngũ chuyên gia SOC sẽ phản hồi và đề xuất giải pháp phù hợp nhất với hạ tầng — hoàn toàn miễn phí.
         </p>
 
         <div class="contact-detail">
@@ -1245,15 +1196,15 @@
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
           <div class="contact-detail-text">
-            <span>Email Tư Vấn</span>
-            <strong>security@cybershieldvn.com</strong>
+            <span>Email Vận Hành SOC</span>
+            <strong>vnpt.noc.khanh@gmail.com</strong>
           </div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
           <div class="contact-detail-text">
-            <span>Trụ Sở Chính</span>
-            <strong>Tầng 18, Tòa nhà Bitexco, TP. Hồ Chí Minh</strong>
+            <span>Trụ Sở Chính NOC</span>
+            <strong>VNPT NOC Center, TP. Hồ Chí Minh</strong>
           </div>
         </div>
         <div class="contact-detail">
@@ -1266,8 +1217,8 @@
 
         <div style="margin-top: 36px; padding: 20px; background: var(--cyan-glow2); border: 1px solid rgba(0,212,255,0.15); border-radius: var(--radius);">
           <p style="font-size: 0.82rem; color: var(--text-2); line-height: 1.7;">
-            <i class="fa-solid fa-file-lines text-cyan"></i>
-            &nbsp;Để xem đầy đủ thông số kỹ thuật và tài liệu đề xuất giải pháp, truy cập
+            <i class="fa-solid fa-file-pdf fa-solid text-cyan"></i>
+            &nbsp;Tải bảng giá niêm yết và thông số chi tiết của CyberShield Việt Nam (2026) tại
             <a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit"
                target="_blank" rel="noopener"
                style="color: var(--cyan); font-weight: 600;">Google Docs →</a>
@@ -1275,11 +1226,10 @@
         </div>
       </div>
 
-      <!-- Right: Form -->
       <div class="fade-up">
         <div class="form-card">
           <div id="formBody">
-            <h3 class="form-title">Gửi Yêu Cầu Tư Vấn</h3>
+            <h3 class="form-title">Gửi Yêu Cầu Tích Hợp</h3>
             <p class="form-sub">Chúng tôi phản hồi trong vòng 2 giờ làm việc.</p>
 
             <form
@@ -1293,7 +1243,7 @@
                   <input
                     type="text" id="name" name="name"
                     class="form-control"
-                    placeholder="Nguyễn Văn A"
+                    placeholder="Nguyễn Văn Khánh"
                     required
                   />
                 </div>
@@ -1302,7 +1252,7 @@
                   <input
                     type="email" id="email" name="email"
                     class="form-control"
-                    placeholder="a.nguyen@company.vn"
+                    placeholder="vidu@company.vn"
                     required
                   />
                 </div>
@@ -1312,11 +1262,12 @@
                 <label for="solution">Gói Giải Pháp Quan Tâm <span class="req">*</span></label>
                 <select id="solution" name="solution" class="form-control" required>
                   <option value="" disabled selected>-- Chọn gói giải pháp --</option>
-                  <option value="EDR Foundation">EDR Foundation – $6/thiết bị/tháng</option>
-                  <option value="EDR Advanced">EDR Advanced – $12/thiết bị/tháng</option>
-                  <option value="XDR Platform">XDR Platform – $22/thiết bị/tháng</option>
-                  <option value="SOC Managed Service">SOC Managed Service – Liên hệ báo giá</option>
-                  <option value="Tư vấn tổng quan">Tư Vấn Tổng Quan (Chưa quyết định)</option>
+                  <option value="EDR Basic – 5Tr/Node/Năm">EDR Basic – 5.000.000 VNĐ / năm</option>
+                  <option value="EDR Advanced – 15Tr/Node/Năm">EDR Advanced – 15.000.000 VNĐ / năm</option>
+                  <option value="XDR Suite Pro – 25Tr/Node/Năm">XDR Suite Pro – 25.000.000 VNĐ / năm</option>
+                  <option value="XDR Enterprise / SOC Service – 60Tr/Node/Năm">XDR Enterprise / SOC Service – 60.000.000 VNĐ / năm</option>
+                  <option value="Tư vấn tổng quan (SMB)">Tư Vấn Tổng Quan (SMB)</option>
+                  <option value="Tư vấn tổng quan (Enterprise)">Tư Vấn Tổng Quan (Enterprise)</option>
                 </select>
               </div>
 
@@ -1325,30 +1276,29 @@
                 <textarea
                   id="message" name="message"
                   class="form-control"
-                  placeholder="Mô tả ngắn gọn về môi trường hiện tại, số lượng thiết bị, yêu cầu bảo mật đặc thù hoặc sự cố đã xảy ra…"
+                  placeholder="Mô tả sơ bộ về môi trường hiện tại, số lượng thiết bị, yêu cầu bảo mật đặc thù..."
                   required
                 ></textarea>
               </div>
 
-              <input type="hidden" name="_subject" value="[CyberShield VN] Yêu cầu tư vấn mới từ website" />
+              <input type="hidden" name="_subject" value="[CyberShield VN] Yêu cầu tích hợp mới từ website" />
 
               <div class="form-submit">
                 <button type="submit" class="btn-submit" id="submitBtn">
-                  <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu
+                  <i class="fa-solid fa-paper-plane"></i> GỬI YÊU CẦU TÍCH HỢP
                 </button>
                 <p class="form-privacy">
-                  <i class="fa-solid fa-lock"></i>
-                  Thông tin của bạn được mã hóa và bảo mật tuyệt đối.
+                  <i class="fa-solid fa-envelope-lock text-cyan"></i>&nbsp;
+                  Nối mail vận hành về <span class="text-cyan">vnpt.noc.khanh@gmail.com</span>. Thông tin được bảo mật.
                 </p>
               </div>
             </form>
           </div>
 
-          <!-- Success state -->
           <div class="form-success" id="formSuccess">
             <i class="fa-solid fa-circle-check"></i>
-            <h3>Yêu Cầu Đã Được Gửi!</h3>
-            <p>Chuyên gia của chúng tôi sẽ liên hệ với bạn trong vòng 2 giờ làm việc.<br/>Cảm ơn bạn đã tin tưởng CyberShield VN.</p>
+            <h3>Yêu Cầu Tích Hợp Đã Được Gửi!</h3>
+            <p>Chuyên gia SOC sẽ liên hệ với bạn trong vòng 2 giờ làm việc.<br/>Cảm ơn bạn đã tin tưởng CyberShield VN.</p>
           </div>
         </div>
       </div>
@@ -1357,17 +1307,14 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
 <footer>
   <div class="footer-inner">
     <div>
       <div class="logo" style="margin-bottom: 8px;">
         <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        Cyber<span>Shield</span> VN
+        Cyber<span>Shield</span> VN NOC
       </div>
-      <p class="footer-copy">© 2025 CyberShield Vietnam. All rights reserved.</p>
+      <p class="footer-copy">© 2026 CyberShield Vietnam VNPT NOC. All rights reserved.</p>
     </div>
     <div class="footer-links">
       <a href="#solutions">Giải Pháp</a>
@@ -1384,9 +1331,6 @@
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════════
-     SCRIPTS
-══════════════════════════════════════════ -->
 <script>
   /* ── Header scroll shadow ── */
   const header = document.getElementById('header');
@@ -1425,7 +1369,7 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  /* ── Formspree AJAX submit ── */
+  /* ── Formspree AJAX submit – TẠO ID MỚI TRÊN FORMSPREE CHO GỌI LẠI vnpt.noc.khanh@gmail.com ── */
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const formBody = document.getElementById('formBody');
@@ -1434,7 +1378,7 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang gửi…';
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Đang gửi yêu cầu...';
 
     try {
       const data = new FormData(form);
@@ -1452,7 +1396,7 @@
       }
     } catch {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu';
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> GỬI YÊU CẦU TÍCH HỢP';
       alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline 1900 2088.');
     }
   });
