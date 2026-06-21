@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberShield Vietnam – Giải Pháp An Ninh Mạng Doanh Nghiệp</title>
+  <title>CyberShield Vietnam – Giải pháp an ninh mạng doanh nghiệp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* ─────────────────────────────────────────────
-       DESIGN TOKENS – CẬP NHẬT MÀU SẮC TỪ ẢNH CHẾ
+       DESIGN TOKENS
     ───────────────────────────────────────────── */
     :root {
       --bg-deep:    #070A10;
@@ -18,18 +19,18 @@
       --bg-card2:   #151D2E;
       --border:     #1E293B;
       --border-hi:  #1E3A5F;
-      --cyan:       #00D4FF; /* Electric Cyan sắc nét */
+      --cyan:       #00D4FF;
       --cyan-dim:   #0099BB;
       --cyan-glow:  rgba(0,212,255,0.15);
       --cyan-glow2: rgba(0,212,255,0.06);
-      --red:        #E53E3E; /* Branded Red đậm hơn */
+      --red:        #E53E3E;
       --red-dim:    #C0392B;
       --gold:       #F59E0B;
       --text-1:     #E2E8F0;
       --text-2:     #94A3B8;
       --text-3:     #475569;
       --mono:       'JetBrains Mono', monospace;
-      --sans: 'Segoe UI', var(--sans); /* Phông Segoe UI cho giống ảnh chế */
+      --sans:       'Segoe UI', var(--sans);
       --radius:     12px;
       --radius-lg:  20px;
       --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
@@ -46,7 +47,7 @@
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; height: auto; object-fit: cover; } /* Đảm bảo ảnh đẹp */
+    img { display: block; max-width: 100%; height: auto; object-fit: cover; }
 
     /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 6px; }
@@ -125,7 +126,7 @@
     .mobile-nav a:hover { color: var(--cyan); background: var(--cyan-glow2); }
 
     /* ─────────────────────────────────────────────
-       HERO – CẬP NHẬT NỘI DUNG TỪ ẢNH CHẾ
+       HERO
     ───────────────────────────────────────────── */
     #hero {
       position: relative; overflow: hidden;
@@ -148,7 +149,7 @@
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
     }
 
-    /* Radar – chữ ký thiết kế độc đáo */
+    /* Radar */
     .radar-wrap {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -203,7 +204,7 @@
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      letter-spacing: 0.05em; /* Đã bỏ uppercase */
       color: var(--cyan); border: 1px solid rgba(0,212,255,0.3);
       background: rgba(0,212,255,0.06);
       padding: 6px 16px; border-radius: 100px;
@@ -220,7 +221,7 @@
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 6vw, 3.8rem); /* Giảm xíu font cho giống */
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
       font-weight: 900;
       line-height: 1.15;
       letter-spacing: -0.035em;
@@ -286,7 +287,7 @@
     }
     .stat-label {
       font-size: 0.8rem; color: var(--text-3); letter-spacing: 0.05em;
-      text-transform: uppercase; font-weight: 500; margin-top: 4px;
+      font-weight: 500; margin-top: 4px; /* Đã bỏ uppercase */
     }
 
     /* ─────────────────────────────────────────────
@@ -297,7 +298,7 @@
 
     .section-eyebrow {
       font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.15em; text-transform: uppercase;
+      letter-spacing: 0.05em; /* Đã bỏ uppercase */
       color: var(--cyan); margin-bottom: 12px;
     }
     .section-title {
@@ -356,7 +357,7 @@
 
     .card-tag {
       font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      letter-spacing: 0.05em; /* Đã bỏ uppercase */
       padding: 4px 10px; border-radius: 6px;
       background: rgba(0,212,255,0.08); color: var(--cyan);
       border: 1px solid rgba(0,212,255,0.2);
@@ -420,7 +421,7 @@
     }
 
     /* ─────────────────────────────────────────────
-       PRICING – CẬP NHẬT GIÁ TỪ ẢNH CHẾ
+       PRICING
     ───────────────────────────────────────────── */
     #pricing {
       background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-deep) 100%);
@@ -451,11 +452,11 @@
       background: linear-gradient(145deg, #0D1B2A, #111827);
     }
     .price-card.recommended::after {
-      content: 'ĐỀ XUẤT';
+      content: 'Đề xuất'; /* Đã sửa thành chữ thường */
       position: absolute; top: 20px; right: -28px;
       background: var(--cyan); color: var(--bg-deep);
       font-family: var(--mono); font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
       padding: 4px 36px; transform: rotate(35deg);
     }
     .price-card.enterprise {
@@ -465,7 +466,7 @@
 
     .plan-name {
       font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      letter-spacing: 0.05em; /* Đã bỏ uppercase */
       color: var(--text-3); margin-bottom: 8px;
     }
     .plan-title {
@@ -542,7 +543,7 @@
     thead th {
       padding: 16px 20px; text-align: left;
       font-family: var(--mono); font-size: 0.7rem;
-      font-weight: 700; letter-spacing: 0.1em;
+      font-weight: 700; letter-spacing: 0.05em; /* Đã bỏ uppercase */
       color: var(--text-3); border-bottom: 1px solid var(--border);
     }
     thead th:first-child { color: var(--text-2); }
@@ -558,7 +559,7 @@
     .highlight-col { color: var(--cyan) !important; font-weight: 600 !important; }
 
     /* ─────────────────────────────────────────────
-       GALLERY – "ĐỘ" ẢNH THỰC TẾ TỪ ẢNH CHẾ
+       GALLERY
     ───────────────────────────────────────────── */
     #gallery { background: var(--bg-main); }
 
@@ -575,19 +576,17 @@
       cursor: pointer;
       border: 1px solid var(--border);
       background: var(--bg-card);
-      height: 100%; /* Đảm bảo ô Gallery đầy chiều cao */
+      height: 100%; 
     }
     .gallery-item:first-child {
       grid-column: 1 / 3;
       grid-row: 1 / 3;
     }
-    /* Chỉnh sửa ảnh hiển thị đẹp hơn */
     .gallery-item img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
-    /* Tối ưu placeholder nếu không load được ảnh */
     .gallery-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column;
@@ -601,18 +600,18 @@
     .gallery-caption {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 20px 18px 16px;
-      background: linear-gradient(to top, rgba(7,10,16,1) 0%, rgba(7,10,16,0) 100%); /* Caption đậm hơn từ đáy */
+      background: linear-gradient(to top, rgba(7,10,16,1) 0%, rgba(7,10,16,0) 100%);
       font-size: 0.8rem; font-weight: 600; color: var(--text-1);
     }
 
     @media (max-width: 768px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item:first-child { grid-column: 1; grid-row: auto; }
-      .gallery-item img { height: 200px; } /* Mobile ảnh thấp hơn */
+      .gallery-item img { height: 200px; }
     }
 
     /* ─────────────────────────────────────────────
-       CONTACT FORM – CẬP NHẬT TỪ ẢNH CHẾ
+       CONTACT FORM
     ───────────────────────────────────────────── */
     #contact { background: var(--bg-deep); }
 
@@ -645,9 +644,9 @@
       font-size: 0.9rem; color: var(--text-1); font-weight: 600;
     }
 
-    /* Form – Panel đậm hơn cho nổi bật */
+    /* Form */
     .form-card {
-      background: rgba(17,24,39,0.7); /* Background hơi mờ cho form giống panel mờ trong ảnh */
+      background: rgba(17,24,39,0.7);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 44px;
@@ -706,19 +705,19 @@
       display: inline-flex; align-items: center; gap: 10px;
       font-weight: 700; font-size: 0.95rem;
       padding: 14px 32px; border-radius: 10px;
-      background: var(--red); color: white; /* Nút branded red */
+      background: var(--red); color: white;
       border: none; cursor: pointer;
       transition: all var(--transition);
-      width: 100%; justify-content: center; /* Nút full-width như ảnh chế */
+      width: 100%; justify-content: center;
     }
     .btn-submit:hover {
       background: var(--red-dim);
-      box-shadow: 0 0 28px rgba(229,62,62,0.4); /* Glow red */
+      box-shadow: 0 0 28px rgba(229,62,62,0.4);
       transform: translateY(-2px);
     }
     .form-privacy {
       font-size: 0.75rem; color: var(--text-3); line-height: 1.5;
-      text-align: center; width: 100%; margin-top: 10px; /* Center-aligned grey text */
+      text-align: center; width: 100%; margin-top: 10px;
     }
     .form-privacy i { color: var(--cyan); }
 
@@ -736,7 +735,7 @@
     .form-success p { font-size: 0.875rem; color: var(--text-2); }
 
     /* ─────────────────────────────────────────────
-       FOOTER – CẬP NHẬT TỪ ẢNH CHẾ
+       FOOTER
     ───────────────────────────────────────────── */
     footer {
       background: var(--bg-deep);
@@ -795,11 +794,11 @@
     Cyber<span>Shield</span> VN
   </div>
   <nav>
-    <a href="#solutions">Giải Pháp</a>
-    <a href="#pricing">Bảng Giá</a>
-    <a href="#gallery">Thực Tế</a>
-    <a href="#contact">Liên Hệ</a>
-    <a class="nav-cta" href="#contact">Tư Vấn Miễn Phí</a>
+    <a href="#solutions">Giải pháp</a>
+    <a href="#pricing">Bảng giá</a>
+    <a href="#gallery">Thực tế</a>
+    <a href="#contact">Liên hệ</a>
+    <a class="nav-cta" href="#contact">Tư vấn miễn phí</a>
   </nav>
   <button class="hamburger" id="hamburger" aria-label="Mở menu">
     <i class="fa-solid fa-bars"></i>
@@ -807,10 +806,10 @@
 </header>
 
 <nav class="mobile-nav" id="mobileNav">
-  <a href="#solutions" onclick="closeMobileNav()"><i class="fa-solid fa-network-wired"></i>&nbsp; Giải Pháp</a>
-  <a href="#pricing"   onclick="closeMobileNav()"><i class="fa-solid fa-tag"></i>&nbsp; Bảng Giá</a>
-  <a href="#gallery"   onclick="closeMobileNav()"><i class="fa-solid fa-images"></i>&nbsp; Thực Tế</a>
-  <a href="#contact"   onclick="closeMobileNav()"><i class="fa-solid fa-envelope"></i>&nbsp; Liên Hệ</a>
+  <a href="#solutions" onclick="closeMobileNav()"><i class="fa-solid fa-network-wired"></i>&nbsp; Giải pháp</a>
+  <a href="#pricing"   onclick="closeMobileNav()"><i class="fa-solid fa-tag"></i>&nbsp; Bảng giá</a>
+  <a href="#gallery"   onclick="closeMobileNav()"><i class="fa-solid fa-images"></i>&nbsp; Thực tế</a>
+  <a href="#contact"   onclick="closeMobileNav()"><i class="fa-solid fa-envelope"></i>&nbsp; Liên hệ</a>
 </nav>
 
 <section id="hero">
@@ -829,12 +828,12 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span class="dot"></span>
-      Hệ Thống Phòng Thủ Mạng Đang Hoạt Động
+      Hệ thống phòng thủ mạng đang hoạt động
     </div>
 
     <h1 class="hero-title">
-      <span class="threat">GIẢI PHÁP</span> BẢO MẬT TOÀN DIỆN:<br/>
-      TỪ <span class="accent">EDR</span> ĐẾN <span class="accent">XDR</span>
+      <span class="threat">Giải pháp</span> bảo mật toàn diện:<br/>
+      Từ <span class="accent">EDR</span> đến <span class="accent">XDR</span>
     </h1>
 
     <p class="hero-sub">
@@ -844,7 +843,7 @@
 
     <div class="hero-actions">
       <a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit" target="_blank" rel="noopener" class="btn-primary">
-        <i class="fa-solid fa-file-invoice-dollar"></i> NHẬN BÁO GIÁ CHI TIẾT
+        <i class="fa-solid fa-file-invoice-dollar"></i> Nhận báo giá chi tiết
       </a>
       <a href="#contact" class="btn-outline">
         <i class="fa-solid fa-rocket"></i> Yêu cầu khảo sát
@@ -854,19 +853,19 @@
     <div class="hero-stats">
       <div class="stat-item">
         <span class="stat-num">99.8%</span>
-        <div class="stat-label">Tỉ Lệ Phát Hiện</div>
+        <div class="stat-label">Tỉ lệ phát hiện</div>
       </div>
       <div class="stat-item">
         <span class="stat-num">&lt;3s</span>
-        <div class="stat-label">Thời Gian Phản Hồi</div>
+        <div class="stat-label">Thời gian phản hồi</div>
       </div>
       <div class="stat-item">
         <span class="stat-num">24/7</span>
-        <div class="stat-label">Giám Sát SOC</div>
+        <div class="stat-label">Giám sát SOC</div>
       </div>
       <div class="stat-item">
         <span class="stat-num">500+</span>
-        <div class="stat-label">Doanh Nghiệp Bảo Vệ</div>
+        <div class="stat-label">Doanh nghiệp bảo vệ</div>
       </div>
     </div>
   </div>
@@ -874,8 +873,8 @@
 
 <section id="solutions">
   <div class="container">
-    <p class="section-eyebrow fade-up"><i class="fa-solid fa-microchip"></i> &nbsp;Giải Pháp Kỹ Thuật</p>
-    <h2 class="section-title fade-up">Nền Tảng Phòng Thủ<br/>Chuyên Sâu</h2>
+    <p class="section-eyebrow fade-up"><i class="fa-solid fa-microchip"></i> &nbsp;Giải pháp kỹ thuật</p>
+    <h2 class="section-title fade-up">Nền tảng phòng thủ<br/>chuyên sâu</h2>
     <p class="section-lead fade-up">
       Từ phát hiện điểm cuối đến mối tương quan toàn doanh nghiệp — chúng tôi cung cấp
       lớp bảo vệ đa tầng, tích hợp trí tuệ nhân tạo, phù hợp với mọi quy mô tổ chức.
@@ -886,7 +885,7 @@
       <div class="solution-card fade-up">
         <div class="card-icon cyan"><i class="fa-solid fa-laptop-code"></i></div>
         <span class="card-tag">EDR Foundation</span>
-        <h3 class="card-title">Phòng Vệ Điểm Cuối Nền Tảng</h3>
+        <h3 class="card-title">Phòng vệ điểm cuối nền tảng</h3>
         <p class="card-desc">
           Bảo mật thiết bị đầu cuối với khả năng phát hiện hành vi AI thông minh, chống mã độc
           và Ransomware cấp độ File cho SMB.
@@ -901,7 +900,7 @@
       <div class="solution-card fade-up">
         <div class="card-icon red"><i class="fa-solid fa-shield-virus"></i></div>
         <span class="card-tag red-tag">MDR Managed SOC</span>
-        <h3 class="card-title">Vận Hành SOC Toàn Diện 24/7</h3>
+        <h3 class="card-title">Vận hành SOC toàn diện 24/7</h3>
         <p class="card-desc">
           Đội ngũ chuyên gia Level 3 tiếp quản quy trình phát hiện và phản ứng, giải phóng
           nguồn lực IT nội bộ cho tập đoàn.
@@ -930,12 +929,12 @@
         </div>
 
         <div class="xdr-visual">
-          <div class="xdr-layer"><i class="fa-solid fa-envelope-shield"></i> Email Gateway Protection <span class="layer-label">LAYER 01</span></div>
-          <div class="xdr-layer"><i class="fa-solid fa-cloud-meatball"></i> Cloud Workload Security <span class="layer-label">LAYER 02</span></div>
-          <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Network Traffic Analysis <span class="layer-label">LAYER 03</span></div>
-          <div class="xdr-layer"><i class="fa-solid fa-laptop-code"></i> Endpoint Telemetry <span class="layer-label">LAYER 04</span></div>
+          <div class="xdr-layer"><i class="fa-solid fa-envelope-shield"></i> Email Gateway Protection <span class="layer-label">Layer 01</span></div>
+          <div class="xdr-layer"><i class="fa-solid fa-cloud-meatball"></i> Cloud Workload Security <span class="layer-label">Layer 02</span></div>
+          <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Network Traffic Analysis <span class="layer-label">Layer 03</span></div>
+          <div class="xdr-layer"><i class="fa-solid fa-laptop-code"></i> Endpoint Telemetry <span class="layer-label">Layer 04</span></div>
           <div class="xdr-layer" style="border-color: rgba(0,212,255,0.3); color: var(--cyan);">
-            <i class="fa-brain fa-solid"></i> Core Correlation Engine <span class="layer-label" style="color: var(--cyan);">CORE</span>
+            <i class="fa-brain fa-solid"></i> Core Correlation Engine <span class="layer-label" style="color: var(--cyan);">Core</span>
           </div>
         </div>
       </div>
@@ -946,8 +945,8 @@
 
 <section id="pricing">
   <div class="container">
-    <p class="section-eyebrow fade-up"><i class="fa-solid fa-tag"></i> &nbsp;Bảng Giá</p>
-    <h2 class="section-title fade-up">Giải Pháp &amp;<br/>Niêm Yết Giá</h2>
+    <p class="section-eyebrow fade-up"><i class="fa-solid fa-tag"></i> &nbsp;Bảng giá</p>
+    <h2 class="section-title fade-up">Giải pháp &amp;<br/>niêm yết giá</h2>
     <p class="section-lead fade-up">
       Linh hoạt theo quy mô — từ SMB cần nền tảng EDR đến tập đoàn lớn yêu cầu quản lý
       SOC toàn diện 24/7.
@@ -972,11 +971,11 @@
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> Threat Hunting</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> Forensics</li>
         </ul>
-        <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
+        <a href="#contact" class="btn-plan outline">Yêu cầu demo</a>
       </div>
 
       <div class="price-card recommended fade-up">
-        <div class="plan-name">Phổ Biến Nhất</div>
+        <div class="plan-name">Phổ biến nhất</div>
         <div class="plan-title">EDR Advanced</div>
         <div class="plan-desc">Phát hiện nâng cao, thu thập bằng chứng forensics và phản ứng tự động.</div>
         <div class="plan-price">
@@ -992,7 +991,7 @@
           <li><i class="fa-solid fa-check check"></i> MITRE ATT&CK Mapping</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Analyst 24/7</li>
         </ul>
-        <a href="#contact" class="btn-plan fill">Bắt Đầu Ngay</a>
+        <a href="#contact" class="btn-plan fill">Bắt đầu ngay</a>
       </div>
 
       <div class="price-card fade-up">
@@ -1012,7 +1011,7 @@
           <li><i class="fa-solid fa-check check"></i> Network Traffic Analysis</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Managed Service</li>
         </ul>
-        <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
+        <a href="#contact" class="btn-plan outline">Yêu cầu demo</a>
       </div>
 
       <div class="price-card enterprise fade-up">
@@ -1032,7 +1031,7 @@
           <li><i class="fa-solid fa-check check"></i> CISO-as-a-Service</li>
           <li><i class="fa-solid fa-check check"></i> SLA phản hồi < 15 phút</li>
         </ul>
-        <a href="#contact" class="btn-plan gold-fill">Liên Hệ Báo Giá</a>
+        <a href="#contact" class="btn-plan gold-fill">Liên hệ báo giá</a>
       </div>
 
     </div>
@@ -1041,7 +1040,7 @@
       <table>
         <thead>
           <tr>
-            <th>TÍNH NĂNG CHÍNH</th>
+            <th>Tính năng chính</th>
             <th>EDR Basic</th>
             <th class="highlight-col">EDR Advanced</th>
             <th>XDR Suite Pro</th>
@@ -1117,7 +1116,7 @@
     ">
       <div>
         <p style="font-weight: 700; font-size: 1.05rem; color: var(--text-1); margin-bottom: 4px;">
-          <i class="fa-solid fa-file-lines text-cyan"></i>&nbsp; Xem Tài Liệu Kỹ Thuật & Case Study Đầy Đủ
+          <i class="fa-solid fa-file-lines text-cyan"></i>&nbsp; Xem tài liệu kỹ thuật & case study đầy đủ
         </p>
         <p style="font-size: 0.875rem; color: var(--text-2);">
           Thông số chi tiết, kiến trúc triển khai và case study thực tế cho doanh nghiệp.
@@ -1137,8 +1136,8 @@
 
 <section id="gallery">
   <div class="container">
-    <p class="section-eyebrow fade-up"><i class="fa-solid fa-images"></i> &nbsp;Triển Khai Thực Tế</p>
-    <h2 class="section-title fade-up">Hình Ảnh Từ<br/>Hiện Trường</h2>
+    <p class="section-eyebrow fade-up"><i class="fa-solid fa-images"></i> &nbsp;Triển khai thực tế</p>
+    <h2 class="section-title fade-up">Hình ảnh từ<br/>hiện trường</h2>
     <p class="section-lead fade-up">
       Ghi lại từ các dự án triển khai thực tế — từ SOC Operations Center 24/7 đến hệ thống
       core lab và phân tích forensics cấp chuyên gia.
@@ -1148,7 +1147,7 @@
 
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop" alt="SOC Operations Center" />
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Trung Tâm Điều Hành Bảo Mật SOC 24/7</div>
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Trung tâm điều hành bảo mật SOC 24/7</div>
       </div>
 
       <div class="gallery-item">
@@ -1163,12 +1162,12 @@
 
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=800&auto=format&fit=crop" alt="Forensics Analysis" />
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Điều Tra Forensics Cấp Chuyên Gia</div>
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Điều tra Forensics cấp chuyên gia</div>
       </div>
 
       <div class="gallery-item">
         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Threat Hunters" />
-        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Đội Ngũ Threat Hunters & Configures</div>
+        <div class="gallery-caption"><i class="fa-solid fa-circle text-cyan" style="font-size:0.6rem;"></i> &nbsp;Đội ngũ Threat Hunters & Configures</div>
       </div>
 
     </div>
@@ -1180,8 +1179,8 @@
     <div class="contact-layout">
 
       <div class="contact-info fade-up">
-        <p class="section-eyebrow"><i class="fa-solid fa-headset"></i> &nbsp;Liên Hệ</p>
-        <h2 class="section-title">Bắt Đầu Hành Trình<br/>Bảo Vệ Ngay</h2>
+        <p class="section-eyebrow"><i class="fa-solid fa-headset"></i> &nbsp;Liên hệ</p>
+        <h2 class="section-title">Bắt đầu hành trình<br/>bảo vệ ngay</h2>
         <p class="section-lead">
           Đội ngũ chuyên gia SOC sẽ phản hồi và đề xuất giải pháp phù hợp nhất với hạ tầng — hoàn toàn miễn phí.
         </p>
@@ -1196,21 +1195,21 @@
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
           <div class="contact-detail-text">
-            <span>Email Vận Hành SOC</span>
+            <span>Email vận hành SOC</span>
             <strong>vnpt.noc.khanh@gmail.com</strong>
           </div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
           <div class="contact-detail-text">
-            <span>Trụ Sở Chính NOC</span>
+            <span>Trụ sở chính NOC</span>
             <strong>VNPT NOC Center, TP. Hồ Chí Minh</strong>
           </div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-clock"></i></div>
           <div class="contact-detail-text">
-            <span>Giờ Làm Việc</span>
+            <span>Giờ làm việc</span>
             <strong>T2 – T6: 08:00 – 18:00 | SOC: 24/7</strong>
           </div>
         </div>
@@ -1229,7 +1228,7 @@
       <div class="fade-up">
         <div class="form-card">
           <div id="formBody">
-            <h3 class="form-title">Gửi Yêu Cầu Tích Hợp</h3>
+            <h3 class="form-title">Gửi yêu cầu tích hợp</h3>
             <p class="form-sub">Chúng tôi phản hồi trong vòng 2 giờ làm việc.</p>
 
             <form
@@ -1239,7 +1238,7 @@
             >
               <div class="form-row">
                 <div class="form-group">
-                  <label for="name">Họ &amp; Tên <span class="req">*</span></label>
+                  <label for="name">Họ &amp; tên <span class="req">*</span></label>
                   <input
                     type="text" id="name" name="name"
                     class="form-control"
@@ -1248,7 +1247,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="email">Email Công Ty <span class="req">*</span></label>
+                  <label for="email">Email công ty <span class="req">*</span></label>
                   <input
                     type="email" id="email" name="email"
                     class="form-control"
@@ -1259,20 +1258,20 @@
               </div>
 
               <div class="form-group">
-                <label for="solution">Gói Giải Pháp Quan Tâm <span class="req">*</span></label>
+                <label for="solution">Gói giải pháp quan tâm <span class="req">*</span></label>
                 <select id="solution" name="solution" class="form-control" required>
                   <option value="" disabled selected>-- Chọn gói giải pháp --</option>
                   <option value="EDR Basic – 5Tr/Node/Năm">EDR Basic – 5.000.000 VNĐ / năm</option>
                   <option value="EDR Advanced – 15Tr/Node/Năm">EDR Advanced – 15.000.000 VNĐ / năm</option>
                   <option value="XDR Suite Pro – 25Tr/Node/Năm">XDR Suite Pro – 25.000.000 VNĐ / năm</option>
                   <option value="XDR Enterprise / SOC Service – 60Tr/Node/Năm">XDR Enterprise / SOC Service – 60.000.000 VNĐ / năm</option>
-                  <option value="Tư vấn tổng quan (SMB)">Tư Vấn Tổng Quan (SMB)</option>
-                  <option value="Tư vấn tổng quan (Enterprise)">Tư Vấn Tổng Quan (Enterprise)</option>
+                  <option value="Tư vấn tổng quan (SMB)">Tư vấn tổng quan (SMB)</option>
+                  <option value="Tư vấn tổng quan (Enterprise)">Tư vấn tổng quan (Enterprise)</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="message">Nội Dung Yêu Cầu <span class="req">*</span></label>
+                <label for="message">Nội dung yêu cầu <span class="req">*</span></label>
                 <textarea
                   id="message" name="message"
                   class="form-control"
@@ -1285,7 +1284,7 @@
 
               <div class="form-submit">
                 <button type="submit" class="btn-submit" id="submitBtn">
-                  <i class="fa-solid fa-paper-plane"></i> GỬI YÊU CẦU TÍCH HỢP
+                  <i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu tích hợp
                 </button>
                 <p class="form-privacy">
                   <i class="fa-solid fa-envelope-lock text-cyan"></i>&nbsp;
@@ -1297,7 +1296,7 @@
 
           <div class="form-success" id="formSuccess">
             <i class="fa-solid fa-circle-check"></i>
-            <h3>Yêu Cầu Tích Hợp Đã Được Gửi!</h3>
+            <h3>Yêu cầu tích hợp đã được gửi!</h3>
             <p>Chuyên gia SOC sẽ liên hệ với bạn trong vòng 2 giờ làm việc.<br/>Cảm ơn bạn đã tin tưởng CyberShield VN.</p>
           </div>
         </div>
@@ -1317,11 +1316,11 @@
       <p class="footer-copy">© 2026 CyberShield Vietnam VNPT NOC. All rights reserved.</p>
     </div>
     <div class="footer-links">
-      <a href="#solutions">Giải Pháp</a>
-      <a href="#pricing">Bảng Giá</a>
+      <a href="#solutions">Giải pháp</a>
+      <a href="#pricing">Bảng giá</a>
       <a href="#gallery">Gallery</a>
-      <a href="#contact">Liên Hệ</a>
-      <a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit" target="_blank">Tài Liệu</a>
+      <a href="#contact">Liên hệ</a>
+      <a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit" target="_blank">Tài liệu</a>
     </div>
     <div class="footer-social">
       <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -1369,7 +1368,7 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  /* ── Formspree AJAX submit – TẠO ID MỚI TRÊN FORMSPREE CHO GỌI LẠI vnpt.noc.khanh@gmail.com ── */
+  /* ── Formspree AJAX submit ── */
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const formBody = document.getElementById('formBody');
@@ -1396,7 +1395,7 @@
       }
     } catch {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> GỬI YÊU CẦU TÍCH HỢP';
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu tích hợp';
       alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua hotline 1900 2088.');
     }
   });
