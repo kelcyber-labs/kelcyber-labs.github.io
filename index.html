@@ -6,661 +6,84 @@
     <title>KEL Cyber Labs | Enterprise Network & Advanced Threat Defense Center</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Enterprise Cyber Color Palette */
         :root {
-            --bg-main: #040811;
-            --bg-card: #0b111e;
-            --bg-nav: rgba(4, 8, 17, 0.9);
-            --border-color: #1e293b;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            
-            /* KEL Cyber Identity Colors */
-            --cyber-green: #00e676; 
-            --cyber-blue: #00b0ff;  
-            --cyber-red: #ff3d00;   
-        }
-
-        /* Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--cyber-green);
-            border: 1px solid rgba(0, 230, 118, 0.2);
-            margin-bottom: 16px;
-        }
-
-        /* Header Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-nav);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 9999;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--cyber-green);
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--text-primary);
-            font-weight: 400;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 32px;
-        }
-
-        nav a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        nav a:hover, nav li.active a {
-            color: var(--cyber-green);
-        }
-
-        .header-cta {
-            background: linear-gradient(135deg, var(--cyber-green) 0%, #00c853 100%);
-            color: #000000;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0, 230, 118, 0.2);
-        }
-
-        /* Hero Operations Center Section */
-        .hero {
-            padding: 180px 0 100px 0;
-            background: radial-gradient(circle at 80% 20%, rgba(0, 176, 255, 0.08) 0%, rgba(4, 8, 17, 0) 60%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-
-        .hero-content h1 span {
-            background: linear-gradient(to right, #ffffff, #bccee4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 540px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--cyber-blue) 0%, #0091ea 100%);
-            color: #ffffff;
-            padding: 14px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 176, 255, 0.2);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-primary);
-            padding: 14px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        /* Real-time Status Widget */
-        .status-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 32px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .status-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 16px;
-            margin-bottom: 20px;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--cyber-green);
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--cyber-green);
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);
-            animation: pulse 1.6s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
-        }
-
-        .status-line {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .status-line span.value {
-            color: var(--cyber-blue);
-            font-weight: bold;
-        }
-
-        /* NEW: Gallery Section / Evidence Showcase (Tăng độ uy tín) */
-        .gallery-section {
-            padding: 100px 0;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(11, 17, 30, 0.4);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .gallery-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            border-color: var(--cyber-blue);
-            transform: translateY(-4px);
-        }
-
-        .gallery-img-wrapper {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            background: #111827;
-            overflow: hidden;
-        }
-
-        /* Sử dụng ảnh Unsplash chuyên dụng về Tech/Server/SOC bảo mật phối màu tối */
-        .gallery-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover .gallery-img-wrapper img {
-            opacity: 0.95;
-        }
-
-        .gallery-info {
-            padding: 20px;
-        }
-
-        .gallery-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
-
-        .gallery-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Solutions Infrastructure Section */
-        .solutions {
-            padding: 100px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 32px;
-        }
-
-        .solution-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-4px);
-            border-color: #334155;
-        }
-
-        .icon-wrapper {
-            width: 56px;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-            color: var(--cyber-green);
-        }
-
-        /* Licensing Section */
-        .licensing {
-            padding: 100px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .license-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 64px 40px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .license-box::after {
-            content: 'OFFICIAL SYSTEM INTEGRATION';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--cyber-green);
-            color: #000000;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 4px 16px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-        }
-
-        .btn-procure {
-            background: var(--cyber-green);
-            color: #000000;
-            padding: 16px 48px;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            display: inline-block;
-        }
-
-        .partner-link {
-            display: block;
-            margin-top: 24px;
-            font-size: 0.9rem;
-            color: var(--cyber-blue);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 4fr 5fr;
-            gap: 64px;
-        }
-
-        .contact-details {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 48px;
-        }
-
-        .info-block {
-            margin-bottom: 32px;
-        }
-
-        .info-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--cyber-blue);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .info-value-tech {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .contact-form {
-            background: #060b14;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg-main);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: var(--text-primary);
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, var(--cyber-blue) 0%, #0091ea 100%);
-            color: #ffffff;
-            padding: 14px;
-            border-radius: 4px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #02040a;
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        @media (max-width: 968px) {
-            .hero-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-actions { justify-content: center; }
-            nav { display: none; }
-        }
+            --bg-main: #040811; --bg-card: #0b111e; --bg-nav: rgba(4, 8, 17, 0.9);
+            --border-color: #1e293b; --text-primary: #ffffff; --text-secondary: #94a3b8;
+            --cyber-green: #00e676; --cyber-blue: #00b0ff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: -apple-system, sans-serif; background-color: var(--bg-main); color: var(--text-primary); }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        header { position: fixed; top: 0; width: 100%; background-color: var(--bg-nav); border-bottom: 1px solid var(--border-color); z-index: 9999; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--cyber-green); }
+        .header-cta { background: var(--cyber-green); color: #000; padding: 10px 20px; border-radius: 4px; font-weight: 700; }
+        .hero { padding: 180px 0 100px 0; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .status-panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 32px; font-family: monospace; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+        .gallery-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; }
+        .gallery-img-wrapper { height: 200px; overflow: hidden; }
+        .gallery-img-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .contact { padding: 100px 0; }
+        .contact-grid { display: grid; grid-template-columns: 4fr 5fr; gap: 64px; }
+        .contact-form { background: #060b14; border: 1px solid var(--border-color); border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 24px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px; background: var(--bg-main); border: 1px solid var(--border-color); color: #fff; }
+        .btn-submit { background: var(--cyber-blue); color: #fff; padding: 14px; border: none; cursor: pointer; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container nav-container">
-            <div class="logo"><i class="fa-solid : f8e2b398-79cc-4370-862f-2b7db8c010fe fa-shield-halved"></i> KEL🛡️<span>Cyber Labs</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#gallery">Hoạt Động SOC</a></li>
-                    <li><a href="#solutions">Hạ Tầng Core</a></li>
-                    <li><a href="#licensing">Cấp Phép</a></li>
-                    <li><a href="#contact">Liên Hệ SOC</a></li>
-                </ul>
-            </nav>
+            <div class="logo">KEL 🛡️ Cyber Labs</div>
             <a href="#contact" class="header-cta">Yêu Cầu Tích Hợp</a>
         </div>
     </header>
 
     <section class="hero">
         <div class="container hero-grid">
-            <div class="hero-content">
-                <span class="badge"><i class="fa-solid fa-server"></i> Enterprise Standard Architecture</span>
-                <h1><span>Advanced Enterprise Network & Threat Defense Center</span></h1>
-                <p>Nghiên cứu và triển khai cấu trúc phòng thủ mạng chuyên sâu cấp doanh nghiệp. Đồng bộ giải pháp định tuyến Dual WAN tải cao, hệ thống quản trị mã độc tập trung XDR và năng lực chống DDoS nâng cao.</p>
-                <div class="hero-actions">
-                    <a href="#licensing" class="btn-primary">Yêu Cầu Khảo Sát Hệ Thống</a>
-                    <a href="#solutions" class="btn-secondary">Kiến Trúc Core Labs</a>
-                </div>
+            <div>
+                <h1>Advanced Enterprise Network & Threat Defense Center</h1>
+                <p>Nghiên cứu và triển khai cấu trúc phòng thủ mạng chuyên sâu cấp doanh nghiệp. Đồng bộ giải pháp định tuyến Dual WAN tải cao, hệ thống XDR và chống DDoS nâng cao.</p>
             </div>
-            
             <div class="status-panel">
-                <div class="status-header">
-                    <div style="font-weight: bold;"><i class="fa-solid fa-terminal"></i> CORE SYSTEM MONITOR</div>
-                    <div class="status-indicator">
-                        <div class="pulse-dot"></div>
-                        <span>OPERATIONAL</span>
-                    </div>
-                </div>
-                <div class="status-line"><span>Central Firewall Architecture:</span><span class="value">Active Defensive Matrix</span></div>
-                <div class="status-line"><span>Central Routing Backbone:</span><span class="value">DrayTek Vigor 3912S HW</span></div>
-                <div class="status-line"><span>Switch Optical Fabric:</span><span class="value">MikroTik 10Gbps Core Array</span></div>
-                <div class="status-line"><span>Endpoint Management Center:</span><span class="value">Kaspersky Next XDR Expert</span></div>
-                <div class="status-line"><span>Anti-DDoS Cloud Defense:</span><span class="value">VNPT Anti-DDoS Advanced</span></div>
-                <div class="status-line"><span>Data Arrays Protection:</span><span class="value">Buffalo NAS Mass Arrays</span></div>
+                <div style="font-weight: bold; margin-bottom: 20px;">[ CORE SYSTEM MONITOR ]</div>
+                <div style="margin-bottom: 10px;">Central Firewall: <span style="color:var(--cyber-blue)">Active Defensive Matrix</span></div>
+                <div style="margin-bottom: 10px;">Routing Backbone: <span style="color:var(--cyber-blue)">DrayTek Vigor 3912S HW</span></div>
+                <div style="margin-bottom: 10px;">Switch Fabric: <span style="color:var(--cyber-blue)">MikroTik 10Gbps Core Array</span></div>
             </div>
         </div>
     </section>
 
-    <section class="gallery-section" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-network-wired"></i> Live Operations & Deployments</h2>
-                <p>Hình ảnh thực tế từ các phân vùng triển khai hạ tầng kỹ thuật cao, phòng giám sát an ninh mạng (SOC) và cấu trúc phần cứng cốt lõi.</p>
+    <section class="container" style="padding: 100px 0;">
+        <h2>Live Operations & Deployments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600" alt="SOC"></div>
+                <div style="padding: 20px;"><h4>Security Operations Center</h4></div>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=cover&w=600&q=80" alt="SOC Center">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Security Operations Center</h4>
-                        <p>Giám sát lưu lượng hệ thống mạng Dual WAN 10Gbps thời gian thực, phát hiện bất thường thông qua bảng quản trị tập trung XDR.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=cover&w=600&q=80" alt="Core Server Hardware">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Core Hardware Node Architecture</h4>
-                        <p>Tổ hợp thiết bị lõi DrayTek Vigor 3912S kết hợp hệ thống chuyển mạch quang Switch MikroTik đặt tại tủ Rack trung tâm phòng Lab.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=cover&w=600&q=80" alt="Cyber Security Analysis">
-                    </div>
-                    <div class="gallery-info">
-                        <h4>Advanced Threat Hunting</h4>
-                        <p>Kỹ sư rà soát lỗ hổng, phân tích mã độc chuyên sâu độc hại và phân phối chính ngạch giải pháp License Enterprise Kaspersky.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="solutions" id="solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2>Hạ Tầng Core & Hệ Sinh Thái Phòng Thủ</h2>
-                <p>Kiến trúc tích hợp đồng bộ chuẩn công nghiệp cho các hệ thống thông tin, vận hành tự động và giảm thiểu rủi ro bảo mật lớp Gateway.</p>
-            </div>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
-                    <h3>Endpoint Protection Suite</h3>
-                    <p>Tích hợp nền tảng Kaspersky Next XDR Expert, tự động phát hiện, phản ứng và cô lập nguy cơ mã độc chuyên sâu, bảo vệ toàn vẹn chuỗi máy trạm doanh nghiệp.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>High-Throughput Routing</h3>
-                    <p>Cân bằng tải tối ưu hạ tầng Dual WAN băng thông lớn trên thiết bị lõi DrayTek Vigor 3912S phối hợp hệ thống mạng quang Switch MikroTik chịu tải cao.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-database"></i></div>
-                    <h3>Storage & Data Resiliency</h3>
-                    <p>Giải pháp lưu trữ dự phòng, sao lưu dữ liệu phân tán tự động hóa xây dựng trên mảng Buffalo NAS chuyên dụng, cam kết an toàn dữ liệu và tính sẵn sàng cao.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="licensing" id="licensing">
-        <div class="container">
-            <div class="license-box">
-                <h3>Cấp Phép Bản Quyền & Phân Phối</h3>
-                <p>Cung cấp, gia hạn bản quyền các giải pháp an ninh bảo mật doanh nghiệp Kaspersky Enterprise chính ngạch, tư vấn thiết kế kênh truyền hạ tầng an toàn bảo mật lớp Core.</p>
-                <a href="#contact" class="btn-procure">Nhận Báo Giá Bản Quyền Hệ Thống</a>
-                <a href="https://www.kaspersky.com.vn/" target="_blank" class="partner-link">Khám phá giải pháp từ Kaspersky Global chính thức →</a>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" alt="Server"></div>
+                <div style="padding: 20px;"><h4>Core Hardware Node</h4></div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <div class="container contact-grid">
-            <div class="contact-details">
-                <h3>Văn Phòng Phòng Lab</h3>
-                <div class="info-block">
-                    <div class="info-label"><i class="fa-solid fa-location-dot"></i> Địa Chỉ Trung Tâm SOC</div>
-                    <div style="font-weight: 600;">Khu Vực Phố Đi Bộ Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</div>
-                </div>
-                <div class="info-block">
-                    <div class="info-label"><i class="fa-solid fa-envelope"></i> Hòm Thư Điều Hành</div>
-                    <div class="info-value-tech">vnpt.noc.khanh@gmail.com</div>
-                </div>
-                <div class="info-block">
-                    <div class="info-label"><i class="fa-solid fa-phone"></i> Hotline Kỹ Thuật</div>
-                    <div class="info-value-tech">+84 90 313 4775</div>
-                </div>
+            <div>
+                <h3>Liên Hệ SOC</h3>
+                <p>vnpt.noc.khanh@gmail.com</p>
             </div>
-
-            <form class="contact-form" action="https://formspree.io/f/mqakpylg" method="POST">
-                <div style="font-size: 1.35rem; font-weight: 700;">Khởi Tạo Yêu Cầu Tư Vấn Hệ Thống</div>
-                
-                <div class="form-group">
-                    <input type="text" name="Ten_Don_Vi" placeholder="Tên đơn vị / Cơ quan / Người liên hệ" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="Email" placeholder="Địa chỉ Email chính thức" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="Noi_Dung" placeholder="Mô tả sơ bộ hiện trạng hạ tầng mạng hoặc gói License bảo mật cần tư vấn cấu trúc..." rows="5" required></textarea>
-                </div>
-                
+            <form class="contact-form" action="https://formspree.io/f/xeebjplj" method="POST">
+                <div class="form-group"><input type="text" name="name" placeholder="Tên đơn vị" required></div>
+                <div class="form-group"><input type="email" name="email" placeholder="Email" required></div>
+                <div class="form-group"><textarea name="message" placeholder="Nội dung yêu cầu" rows="5" required></textarea></div>
                 <input type="hidden" name="_next" value="https://kelcyber-labs.github.io">
-                
                 <button type="submit" class="btn-submit">Gửi Yêu Cầu Tích Hợp</button>
             </form>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyber-green); margin-bottom: 12px;">KEL⚙️<span>Cyber Labs</span></div>
-            <p style="max-width: 600px; margin: 0 auto 20px auto; font-size: 0.9rem;">Trung tâm nghiên cứu, tối ưu hóa kiến trúc mạng diện rộng Enterprise Standard và giải pháp an toàn thông tin tích hợp Gateway Matrix.</p>
-            <div style="font-size: 0.8rem; color: #475569;">
-                &copy; 2026 KEL Cyber Labs. All rights reserved. Powered by Cyber Infrastructure.
-            </div>
-        </div>
-    </footer>
-
 </body>
 </html>
