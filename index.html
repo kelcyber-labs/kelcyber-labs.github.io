@@ -205,41 +205,42 @@
     }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(0,0,0,0.5); border-color: rgba(0,200,240,0.25); }
 
-    /* Kasp Corner Logo - Added */
-    .kasp-corner-logo { position: absolute; top: 12px; right: 12px; width: 22px; height: 26px; z-index: 10; transition: transform var(--trans), opacity var(--trans); opacity: 0.85; }
-    .product-card:hover .kasp-corner-logo { transform: scale(1.1); opacity: 1; }
-
+    /* Fix image overlap */
     .product-img-wrap {
       background: linear-gradient(135deg, #0B1420 0%, #0F1E35 60%, #080F1A 100%);
-      padding: 28px 24px 20px; display: flex; align-items: center; justify-content: center;
-      min-height: 185px; position: relative; overflow: hidden;
+      padding: 45px 24px 25px; display: flex; align-items: center; justify-content: center;
+      height: 220px; position: relative; overflow: hidden;
     }
     .product-img-wrap::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
       background: linear-gradient(to top, var(--bg-card), transparent);
+      z-index: 1;
     }
-    
-    /* Modified Image CSS to use contain and hard limits */
-    .product-img-wrap img { width: 100%; height: 140px; object-fit: contain; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5)); transition: transform var(--trans); }
+    .product-img-wrap img { 
+      max-height: 120px; width: auto; object-fit: contain; 
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5)); 
+      transition: transform var(--trans); 
+      position: relative; z-index: 2; 
+    }
     .product-card:hover .product-img-wrap img { transform: scale(1.04) translateY(-3px); }
 
-    .product-badge-wrap { position: absolute; top: 12px; left: 12px; }
+    .product-badge-wrap { position: absolute; top: 12px; left: 12px; z-index: 3; }
     .product-badge { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 9px; border-radius: 5px; }
     .product-badge.new { background: rgba(0,200,80,0.15); color: var(--kasp-green); border: 1px solid rgba(0,200,80,0.3); }
     .product-badge.hot { background: rgba(255,59,59,0.15); color: var(--red); border: 1px solid rgba(255,59,59,0.3); }
     .product-badge.best { background: rgba(0,200,240,0.12); color: var(--cyan); border: 1px solid rgba(0,200,240,0.3); }
 
-    .product-info { padding: 20px 22px 24px; }
+    .product-info { padding: 20px 22px 24px; position: relative; z-index: 3; }
     .product-brand { font-family: var(--mono); font-size: 0.65rem; font-weight: 600; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
     .product-name { font-size: 1rem; font-weight: 700; color: var(--text-1); margin-bottom: 6px; line-height: 1.3; }
-    .product-tier { font-size: 0.78rem; color: var(--text-2); margin-bottom: 14px; }
+    .product-tier { font-size: 0.78rem; color: var(--text-2); margin-bottom: 14px; min-height: 40px; }
     .product-specs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
     .spec-chip { font-size: 0.68rem; padding: 3px 9px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-3); font-family: var(--mono); }
     .product-price-row { display: flex; align-items: center; justify-content: space-between; }
     .product-price { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; color: var(--cyan); }
     .product-price-note { font-size: 0.68rem; color: var(--text-3); }
     .product-btn { font-size: 0.78rem; font-weight: 600; padding: 7px 16px; border-radius: 7px; border: 1px solid var(--border-hi); color: var(--text-2); background: transparent; cursor: pointer; transition: all var(--trans); text-decoration: none; display: inline-block; }
-    .product-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .product-btn:hover { border-color: var(--cyan); background: var(--cyan); color: var(--bg-deep); }
 
     /* ═══════════════════════════════════════════
        SOLUTIONS
@@ -250,17 +251,16 @@
 
     .solution-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      overflow: hidden; transition: all var(--trans); position: relative;
+      overflow: hidden; transition: all var(--trans); position: relative; display: flex; flex-direction: column;
     }
     .solution-card:hover { border-color: rgba(0,200,240,0.28); box-shadow: 0 8px 40px rgba(0,0,0,0.4); transform: translateY(-4px); }
     .solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: opacity var(--trans); }
     .solution-card:hover::before { opacity: 1; }
 
     /* solution image banner */
-    .sol-img-banner { width: 100%; height: 190px; object-fit: cover; display: block; }
-    .sol-img-placeholder { width: 100%; height: 190px; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: linear-gradient(135deg, #0B1420, #0D1B30); color: var(--border-hi); }
+    .sol-img-banner { width: 100%; height: 220px; object-fit: cover; display: block; }
 
-    .sol-body { padding: 28px 30px 32px; }
+    .sol-body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; }
     .card-icon { width: 48px; height: 48px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px; }
     .card-icon.cyan { background: rgba(0,200,240,0.1); color: var(--cyan); }
     .card-icon.red  { background: rgba(255,59,59,0.1);  color: var(--red); }
@@ -272,7 +272,7 @@
 
     .card-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.015em; color: var(--text-1); margin-bottom: 9px; }
     .card-desc { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; margin-bottom: 22px; }
-    .card-features { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
     .card-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.845rem; color: var(--text-2); }
     .card-features li i { color: var(--cyan); font-size: 0.7rem; margin-top: 4px; flex-shrink: 0; }
 
@@ -283,7 +283,7 @@
     .sol-img-banner.tall { height: 100%; min-height: 320px; object-fit: cover; }
     @media (max-width: 780px) { .solution-card.featured { grid-template-columns: 1fr; } .sol-img-banner.tall { height: 220px; min-height: auto; } }
 
-    .xdr-visual { display: flex; flex-direction: column; gap: 9px; }
+    .xdr-visual { display: flex; flex-direction: column; gap: 9px; margin-top: auto; }
     .xdr-layer { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 9px; background: rgba(0,0,0,0.35); border: 1px solid var(--border); font-size: 0.83rem; color: var(--text-2); transition: border-color var(--trans); cursor: default; }
     .xdr-layer:hover { border-color: var(--cyan-dim); color: var(--text-1); }
     .xdr-layer i { color: var(--cyan); width: 18px; text-align: center; }
@@ -542,10 +542,6 @@
 
       <!-- Standard -->
       <div class="product-card fade-up">
-        <svg class="kasp-corner-logo" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" title="Kaspersky Protected">
-          <path d="M20 2L4 9V24C4 33.6 11 42.5 20 46C29 42.5 36 33.6 36 24V9L20 2Z" fill="#00C851" fill-opacity="0.15" stroke="#00C851" stroke-width="2"/>
-          <path d="M14 24L18 28L26 20" stroke="#00C851" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <div class="product-img-wrap">
           <div class="product-badge-wrap"><span class="product-badge new">MỚI 2024</span></div>
           <img
@@ -566,17 +562,13 @@
           </div>
           <div class="product-price-row">
             <div><div class="product-price">từ $19.99</div><div class="product-price-note">/ năm / thiết bị</div></div>
-            <a href="#contact" class="product-btn">Mua Ngay</a>
+            <a href="#contact" class="product-btn" onclick="document.getElementById('solution').value='Kaspersky Standard'">Mua Ngay</a>
           </div>
         </div>
       </div>
 
       <!-- Plus -->
       <div class="product-card fade-up">
-        <svg class="kasp-corner-logo" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" title="Kaspersky Protected">
-          <path d="M20 2L4 9V24C4 33.6 11 42.5 20 46C29 42.5 36 33.6 36 24V9L20 2Z" fill="#00C851" fill-opacity="0.15" stroke="#00C851" stroke-width="2"/>
-          <path d="M14 24L18 28L26 20" stroke="#00C851" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <div class="product-img-wrap">
           <div class="product-badge-wrap"><span class="product-badge best">PHỔ BIẾN</span></div>
           <img
@@ -597,17 +589,13 @@
           </div>
           <div class="product-price-row">
             <div><div class="product-price">từ $35.99</div><div class="product-price-note">/ năm / 3 thiết bị</div></div>
-            <a href="#contact" class="product-btn">Mua Ngay</a>
+            <a href="#contact" class="product-btn" onclick="document.getElementById('solution').value='Kaspersky Plus'">Mua Ngay</a>
           </div>
         </div>
       </div>
 
       <!-- Premium -->
       <div class="product-card fade-up">
-        <svg class="kasp-corner-logo" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" title="Kaspersky Protected">
-          <path d="M20 2L4 9V24C4 33.6 11 42.5 20 46C29 42.5 36 33.6 36 24V9L20 2Z" fill="#00C851" fill-opacity="0.15" stroke="#00C851" stroke-width="2"/>
-          <path d="M14 24L18 28L26 20" stroke="#00C851" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <div class="product-img-wrap">
           <div class="product-badge-wrap"><span class="product-badge hot">BEST VALUE</span></div>
           <img
@@ -628,17 +616,13 @@
           </div>
           <div class="product-price-row">
             <div><div class="product-price">từ $54.99</div><div class="product-price-note">/ năm / 5 thiết bị</div></div>
-            <a href="#contact" class="product-btn">Mua Ngay</a>
+            <a href="#contact" class="product-btn" onclick="document.getElementById('solution').value='Kaspersky Premium'">Mua Ngay</a>
           </div>
         </div>
       </div>
 
       <!-- Small Office Security -->
       <div class="product-card fade-up">
-        <svg class="kasp-corner-logo" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg" title="Kaspersky Protected">
-          <path d="M20 2L4 9V24C4 33.6 11 42.5 20 46C29 42.5 36 33.6 36 24V9L20 2Z" fill="#00C851" fill-opacity="0.15" stroke="#00C851" stroke-width="2"/>
-          <path d="M14 24L18 28L26 20" stroke="#00C851" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <div class="product-img-wrap">
           <div class="product-badge-wrap"><span class="product-badge best">DOANH NGHIỆP</span></div>
           <img
@@ -659,7 +643,7 @@
           </div>
           <div class="product-price-row">
             <div><div class="product-price">Liên hệ</div><div class="product-price-note">Báo giá theo số lượng</div></div>
-            <a href="#contact" class="product-btn">Tư Vấn</a>
+            <a href="#contact" class="product-btn" onclick="document.getElementById('solution').value='Kaspersky Small Office Security'">Tư Vấn</a>
           </div>
         </div>
       </div>
@@ -678,8 +662,8 @@
 <section id="solutions">
   <div class="container">
     <p class="section-eyebrow fade-up"><i class="fa-solid fa-microchip"></i>&nbsp; Giải Pháp Kỹ Thuật</p>
-    <h2 class="section-title fade-up">Nền Tảng Phòng Thủ<br/>Chuyên Sâu</h2>
-    <p class="section-lead fade-up">Từ phát hiện điểm cuối đến mối tương quan toàn doanh nghiệp — giải pháp đa tầng, tích hợp AI, phù hợp mọi quy mô tổ chức.</p>
+    <h2 class="section-title fade-up">Nền Tảng Phòng Thủ<br/>Chuyên Sâu Từ Kaspersky</h2>
+    <p class="section-lead fade-up">Từ phát hiện điểm cuối đến mối tương quan toàn doanh nghiệp — giải pháp đa tầng từ hệ sinh thái Kaspersky, tích hợp AI, phù hợp mọi quy mô tổ chức.</p>
 
     <div class="solutions-grid">
 
@@ -691,19 +675,19 @@
             onerror="this.src='https://placehold.co/700x190/0B1420/00C8F0?text=EDR+Dashboard'"
             alt="EDR Dashboard"
             loading="lazy"
-            style="width:100%;height:190px;object-fit:cover;"
+            class="sol-img-banner"
           />
         </div>
         <div class="sol-body">
           <div class="card-icon cyan"><i class="fa-solid fa-laptop-code"></i></div>
-          <span class="card-tag">EDR</span>
-          <h3 class="card-title">Endpoint Detection & Response</h3>
-          <p class="card-desc">Giám sát thời gian thực toàn bộ thiết bị đầu cuối, phân tích hành vi nâng cao và tự động hóa phản ứng sự cố ngay tại điểm tấn công.</p>
+          <span class="card-tag">KEDR</span>
+          <h3 class="card-title">Kaspersky Endpoint Detection and Response</h3>
+          <p class="card-desc">Giải pháp Kaspersky EDR giám sát thời gian thực toàn bộ thiết bị đầu cuối, sử dụng công nghệ của Kaspersky để phân tích hành vi và tự động hóa phản ứng sự cố ngay tại điểm tấn công.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check"></i> Phân tích hành vi AI/ML theo thời gian thực</li>
-            <li><i class="fa-solid fa-check"></i> Cô lập tự động thiết bị bị xâm phạm</li>
-            <li><i class="fa-solid fa-check"></i> Thu thập bằng chứng pháp lý số (Forensics)</li>
-            <li><i class="fa-solid fa-check"></i> Tích hợp Kaspersky Threat Intelligence</li>
+            <li><i class="fa-solid fa-check"></i> Phân tích hành vi thông minh (Kaspersky Machine Learning)</li>
+            <li><i class="fa-solid fa-check"></i> Cô lập tự động thiết bị bị xâm phạm ngay lập tức</li>
+            <li><i class="fa-solid fa-check"></i> Thu thập bằng chứng pháp lý số chuyên sâu (Forensics)</li>
+            <li><i class="fa-solid fa-check"></i> Tích hợp liền mạch Kaspersky Threat Intelligence Portal</li>
           </ul>
         </div>
       </div>
@@ -716,19 +700,19 @@
             onerror="this.src='https://placehold.co/700x190/0B1420/FF3B3B?text=MDR+SOC+Center'"
             alt="MDR SOC"
             loading="lazy"
-            style="width:100%;height:190px;object-fit:cover;"
+            class="sol-img-banner"
           />
         </div>
         <div class="sol-body">
           <div class="card-icon red"><i class="fa-solid fa-shield-virus"></i></div>
-          <span class="card-tag red-tag">MDR</span>
-          <h3 class="card-title">Managed Detection & Response</h3>
-          <p class="card-desc">Đội ngũ chuyên gia SOC của CyberShield tiếp quản toàn bộ quy trình phát hiện, điều tra và ứng phó — giải phóng nguồn lực IT nội bộ của bạn.</p>
+          <span class="card-tag red-tag">K-MDR</span>
+          <h3 class="card-title">Kaspersky Managed Detection and Response</h3>
+          <p class="card-desc">Dịch vụ Kaspersky MDR kết hợp công nghệ tiên tiến và đội ngũ chuyên gia SOC CyberShield để tiếp quản toàn bộ quy trình phát hiện, điều tra và ứng phó sự cố.</p>
           <ul class="card-features">
-            <li><i class="fa-solid fa-check"></i> Giám sát 24/7 bởi chuyên gia Level 3</li>
-            <li><i class="fa-solid fa-check"></i> SLA phản hồi dưới 15 phút</li>
-            <li><i class="fa-solid fa-check"></i> Báo cáo hàng tuần & hàng tháng</li>
-            <li><i class="fa-solid fa-check"></i> Hỗ trợ điều tra nội bộ (IR Retainer)</li>
+            <li><i class="fa-solid fa-check"></i> Giám sát 24/7 bởi chuyên gia Level 3 Kaspersky &amp; CyberShield</li>
+            <li><i class="fa-solid fa-check"></i> Tự động hóa ứng phó từ Kaspersky Security Network</li>
+            <li><i class="fa-solid fa-check"></i> SLA phản hồi tấn công nghiêm trọng dưới 15 phút</li>
+            <li><i class="fa-solid fa-check"></i> Cung cấp dữ liệu Threat Hunting liên tục và chủ động</li>
           </ul>
         </div>
       </div>
@@ -744,20 +728,20 @@
         />
         <div class="sol-body">
           <div class="card-icon green"><i class="fa-solid fa-diagram-project"></i></div>
-          <span class="card-tag green-tag">XDR</span>
-          <h3 class="card-title">Extended Detection & Response</h3>
-          <p class="card-desc">Nền tảng Kaspersky XDR hợp nhất dữ liệu từ email, cloud, mạng và điểm cuối. Tương quan sự kiện nâng cao phát hiện tấn công phức tạp mà các giải pháp đơn lẻ không thể thấy.</p>
+          <span class="card-tag green-tag">KATA / XDR</span>
+          <h3 class="card-title">Kaspersky Extended Detection & Response</h3>
+          <p class="card-desc">Nền tảng Kaspersky XDR (bao gồm Kaspersky Anti Targeted Attack) hợp nhất dữ liệu toàn diện từ email, cloud, mạng và điểm cuối. Khả năng tương quan sự kiện nâng cao phát hiện các cuộc tấn công phức tạp mà những giải pháp đơn lẻ không thể nhìn thấy.</p>
           <ul class="card-features" style="margin-bottom:24px;">
-            <li><i class="fa-solid fa-check"></i> Tương quan sự kiện đa nguồn (Email, Cloud, Network, Endpoint)</li>
-            <li><i class="fa-solid fa-check"></i> MITRE ATT&CK mapping tự động</li>
-            <li><i class="fa-solid fa-check"></i> Playbook phản ứng tự động (SOAR)</li>
-            <li><i class="fa-solid fa-check"></i> Threat Hunting chủ động theo yêu cầu</li>
+            <li><i class="fa-solid fa-check"></i> Tương quan sự kiện đa nguồn với Kaspersky XDR Analytics</li>
+            <li><i class="fa-solid fa-check"></i> Bóc tách mã độc tự động qua Kaspersky Sandbox</li>
+            <li><i class="fa-solid fa-check"></i> Liên kết trực tiếp ma trận MITRE ATT&amp;CK framework</li>
+            <li><i class="fa-solid fa-check"></i> Phản ứng tự động thông minh (Automated Playbooks)</li>
           </ul>
           <div class="xdr-visual">
-            <div class="xdr-layer"><i class="fa-solid fa-envelope-shield"></i> Email Gateway Protection <span class="layer-label">LAYER 01</span></div>
-            <div class="xdr-layer"><i class="fa-solid fa-cloud-meatball"></i> Cloud Workload Security <span class="layer-label">LAYER 02</span></div>
-            <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Network Traffic Analysis <span class="layer-label">LAYER 03</span></div>
-            <div class="xdr-layer"><i class="fa-solid fa-laptop-code"></i> Endpoint Telemetry (Kaspersky EDR) <span class="layer-label">LAYER 04</span></div>
+            <div class="xdr-layer"><i class="fa-solid fa-envelope-shield"></i> Kaspersky Security for Mail Server <span class="layer-label">LAYER 01</span></div>
+            <div class="xdr-layer"><i class="fa-solid fa-cloud-meatball"></i> Kaspersky Hybrid Cloud Security <span class="layer-label">LAYER 02</span></div>
+            <div class="xdr-layer"><i class="fa-solid fa-network-wired"></i> Kaspersky Anti Targeted Attack (Network) <span class="layer-label">LAYER 03</span></div>
+            <div class="xdr-layer"><i class="fa-solid fa-laptop-code"></i> Kaspersky EDR Expert (Endpoint) <span class="layer-label">LAYER 04</span></div>
             <div class="xdr-layer" style="border-color:rgba(0,200,240,0.3);color:var(--cyan);"><i class="fa-solid fa-brain"></i> Kaspersky XDR Correlation Engine <span class="layer-label" style="color:var(--cyan);">CORE</span></div>
           </div>
         </div>
@@ -783,14 +767,14 @@
         <div class="price-note">Tối thiểu 50 thiết bị · Billed annually</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> EDR Agent đa nền tảng</li>
+          <li><i class="fa-solid fa-check check"></i> Kaspersky EDR Agent đa nền tảng</li>
           <li><i class="fa-solid fa-check check"></i> Phát hiện hành vi AI cơ bản</li>
           <li><i class="fa-solid fa-check check"></i> Dashboard CyberShield tập trung</li>
           <li><i class="fa-solid fa-check check"></i> Alert &amp; báo cáo tự động</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> Threat Hunting</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Analyst 24/7</li>
         </ul>
-        <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
+        <a href="#contact" class="btn-plan outline" onclick="document.getElementById('solution').value='EDR Foundation'">Mua Ngay</a>
       </div>
 
       <div class="price-card recommended fade-up">
@@ -802,13 +786,13 @@
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <li><i class="fa-solid fa-check check"></i> Tất cả tính năng Foundation</li>
-          <li><i class="fa-solid fa-check check"></i> Threat Hunting chủ động</li>
+          <li><i class="fa-solid fa-check check"></i> Kaspersky Threat Hunting chủ động</li>
           <li><i class="fa-solid fa-check check"></i> Thu thập forensics nâng cao</li>
           <li><i class="fa-solid fa-check check"></i> MITRE ATT&amp;CK Mapping</li>
           <li><i class="fa-solid fa-check check"></i> API tích hợp SIEM/SOAR</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Analyst 24/7</li>
         </ul>
-        <a href="#contact" class="btn-plan fill">Bắt Đầu Ngay</a>
+        <a href="#contact" class="btn-plan fill" onclick="document.getElementById('solution').value='EDR Advanced'">Mua Ngay</a>
       </div>
 
       <div class="price-card fade-up">
@@ -820,13 +804,13 @@
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <li><i class="fa-solid fa-check check"></i> Tất cả tính năng Advanced</li>
-          <li><i class="fa-solid fa-check check"></i> Tương quan sự kiện XDR</li>
+          <li><i class="fa-solid fa-check check"></i> Kaspersky XDR Correlation</li>
           <li><i class="fa-solid fa-check check"></i> Email &amp; Cloud telemetry</li>
-          <li><i class="fa-solid fa-check check"></i> Network traffic analysis</li>
+          <li><i class="fa-solid fa-check check"></i> Kaspersky Network traffic (KATA)</li>
           <li><i class="fa-solid fa-check check"></i> Playbook SOAR tùy chỉnh</li>
           <li class="disabled"><i class="fa-solid fa-minus cross"></i> SOC Managed Service</li>
         </ul>
-        <a href="#contact" class="btn-plan outline">Yêu Cầu Demo</a>
+        <a href="#contact" class="btn-plan outline" onclick="document.getElementById('solution').value='XDR Platform'">Mua Ngay</a>
       </div>
 
       <div class="price-card enterprise fade-up">
@@ -837,14 +821,14 @@
         <div class="price-note">Theo quy mô · Tùy chỉnh SLA</div>
         <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li><i class="fa-solid fa-check check"></i> Toàn bộ tính năng XDR</li>
+          <li><i class="fa-solid fa-check check"></i> Toàn bộ tính năng Kaspersky XDR</li>
           <li><i class="fa-solid fa-check check"></i> SOC Analyst Level 3 24/7</li>
           <li><i class="fa-solid fa-check check"></i> IR Retainer &amp; ứng phó sự cố</li>
           <li><i class="fa-solid fa-check check"></i> CISO-as-a-Service hàng tháng</li>
           <li><i class="fa-solid fa-check check"></i> Tuân thủ ISO 27001 / PCI DSS</li>
           <li><i class="fa-solid fa-check check"></i> SLA phản hồi dưới 15 phút</li>
         </ul>
-        <a href="#contact" class="btn-plan gold-fill">Liên Hệ Báo Giá</a>
+        <a href="#contact" class="btn-plan gold-fill" onclick="document.getElementById('solution').value='SOC Managed Service'">Liên Hệ Báo Giá</a>
       </div>
     </div>
 
@@ -971,17 +955,17 @@
   <div class="container">
     <div class="contact-layout">
       <div class="contact-info fade-up">
-        <p class="section-eyebrow"><i class="fa-solid fa-headset"></i>&nbsp; Liên Hệ</p>
+        <p class="section-eyebrow"><i class="fa-solid fa-headset"></i>&nbsp; Liên Hệ & Mua Hàng</p>
         <h2 class="section-title">Bắt Đầu Hành Trình<br/>Bảo Vệ Của Bạn</h2>
         <p class="section-lead">Đội ngũ chuyên gia CyberShield sẽ phân tích hiện trạng bảo mật và đề xuất giải pháp Kaspersky phù hợp nhất — hoàn toàn miễn phí trong buổi tư vấn đầu tiên.</p>
 
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
-          <div class="contact-detail-text"><span>Hotline 24/7</span><strong>0903134775</strong></div>
+          <div class="contact-detail-text"><span>Hotline Hỗ Trợ 24/7</span><strong>0903 134 775</strong></div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
-          <div class="contact-detail-text"><span>Email Tư Vấn</span><strong>SupportCyber@cybershield.vn</strong></div>
+          <div class="contact-detail-text"><span>Email Tư Vấn</span><strong>security@cybershieldvn.com</strong></div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
@@ -1004,7 +988,7 @@
       <div class="fade-up">
         <div class="form-card">
           <div id="formBody">
-            <h3 class="form-title">Gửi Yêu Cầu Tư Vấn</h3>
+            <h3 class="form-title">Đăng Ký Mua & Yêu Cầu Tư Vấn</h3>
             <p class="form-sub">CyberShield Vietnam phản hồi trong vòng 2 giờ làm việc.</p>
             <form id="contactForm" action="https://formspree.io/f/xeebjplj" method="POST">
               <div class="form-row">
@@ -1018,9 +1002,9 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="solution">Gói Giải Pháp Quan Tâm <span class="req">*</span></label>
+                <label for="solution">Sản Phẩm / Giải Pháp Đăng Ký <span class="req">*</span></label>
                 <select id="solution" name="solution" class="form-control" required>
-                  <option value="" disabled selected>-- Chọn gói giải pháp --</option>
+                  <option value="" disabled selected>-- Chọn sản phẩm muốn mua/tư vấn --</option>
                   <optgroup label="Kaspersky Bản Quyền">
                     <option value="Kaspersky Standard">Kaspersky Standard</option>
                     <option value="Kaspersky Plus">Kaspersky Plus</option>
@@ -1038,9 +1022,9 @@
               </div>
               <div class="form-group">
                 <label for="message">Nội Dung Yêu Cầu <span class="req">*</span></label>
-                <textarea id="message" name="message" class="form-control" placeholder="Mô tả môi trường hiện tại, số lượng thiết bị, yêu cầu bảo mật đặc thù hoặc sự cố đã xảy ra…" required></textarea>
+                <textarea id="message" name="message" class="form-control" placeholder="Mô tả số lượng key muốn mua, quy mô thiết bị công ty hoặc yêu cầu đặc thù..." required></textarea>
               </div>
-              <input type="hidden" name="_subject" value="[CyberShield VN] Yêu cầu tư vấn mới" />
+              <input type="hidden" name="_subject" value="[CyberShield VN] Yêu cầu mua hàng / tư vấn mới" />
               <div class="form-submit">
                 <button type="submit" class="btn-submit" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu</button>
                 <p class="form-privacy"><i class="fa-solid fa-lock"></i> Thông tin được mã hóa và bảo mật tuyệt đối.</p>
@@ -1050,7 +1034,7 @@
           <div class="form-success" id="formSuccess">
             <i class="fa-solid fa-circle-check"></i>
             <h3>Yêu Cầu Đã Được Gửi!</h3>
-            <p>Chuyên gia CyberShield Vietnam sẽ liên hệ trong vòng 2 giờ làm việc.</p>
+            <p>Chuyên viên CyberShield Vietnam sẽ gọi lại qua số hotline 0903 134 775 hoặc email cho bạn trong vòng 2 giờ làm việc để xác nhận đơn hàng.</p>
           </div>
         </div>
       </div>
@@ -1084,20 +1068,20 @@
         <div class="footer-col">
           <h4>Giải Pháp</h4>
           <ul>
-            <li><a href="#solutions">EDR</a></li>
-            <li><a href="#solutions">MDR</a></li>
-            <li><a href="#solutions">XDR Platform</a></li>
+            <li><a href="#solutions">Kaspersky EDR</a></li>
+            <li><a href="#solutions">Kaspersky MDR</a></li>
+            <li><a href="#solutions">Kaspersky XDR Platform</a></li>
             <li><a href="#pricing">SOC Managed Service</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Liên Kết</h4>
+          <h4>Liên Hệ Mua Hàng</h4>
           <ul>
-            <li><a href="#contact">Liên Hệ Tư Vấn</a></li>
+            <li><a href="tel:0903134775">Hotline: 0903 134 775</a></li>
+            <li><a href="#contact">Đăng Ký Tư Vấn</a></li>
+            <li><a href="#pricing">Bảng Giá Dịch Vụ</a></li>
             <li><a href="https://docs.google.com/document/d/1hdZ6Z8Rr7q0Tz4uHxJ9jE1qSNsB5Tg1jE5EJHkJR2K4/edit" target="_blank">Tài Liệu Kỹ Thuật</a></li>
-            <li><a href="#pricing">Bảng Giá</a></li>
-            <li><a href="#gallery">Dự Án Thực Tế</a></li>
           </ul>
         </div>
       </div>
@@ -1172,7 +1156,7 @@
     } catch {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu';
-      alert('Có lỗi xảy ra. Vui lòng thử lại hoặc gọi hotline 0903134775.');
+      alert('Có lỗi xảy ra. Vui lòng thử lại hoặc gọi hotline 0903 134 775.');
     }
   });
 </script>
